@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import meetingImg from '../assets/meeting.jpg';
 
 /* ─────────────────────────────────────────────
    DATA
-───────────────────────────────────────────── */
+   ───────────────────────────────────────────── */
 const SCAN_COVERS = [
   {
     icon: 'fa-solid fa-sitemap',
@@ -109,7 +110,7 @@ const colorMap = {
 
 /* ─────────────────────────────────────────────
    COMPONENT
-───────────────────────────────────────────── */
+   ───────────────────────────────────────────── */
 export default function FreeScan() {
   const [hovered, setHovered] = useState(null);
 
@@ -135,7 +136,7 @@ export default function FreeScan() {
       <div className="relative z-10">
         {/* ────────────────────────────────────────
             TOP NAV
-        ──────────────────────────────────────── */}
+            ──────────────────────────────────────── */}
         <div className="px-6 pt-8 pb-0 max-w-6xl mx-auto">
           <div className="flex items-center justify-between">
             <Link
@@ -154,121 +155,104 @@ export default function FreeScan() {
 
         {/* ════════════════════════════════════════
             HERO — ONE-ON-ONE LIVE FREE SCAN
-        ════════════════════════════════════════ */}
-        <section className="pt-16 pb-10 px-6 max-w-6xl mx-auto">
-          {/* ── Eyebrow ── */}
-          <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-gradient-to-r from-blue-500/15 to-purple-500/15 border border-blue-500/25 rounded-full">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-400" />
-              </span>
-              <span className="text-xs font-extrabold text-blue-300 uppercase tracking-widest">
-                One-on-One · Live · Completely Free
-              </span>
-            </div>
-          </div>
-
-          {/* ── Headline ── */}
-          <h1 className="text-4xl md:text-5xl lg:text-[3.75rem] font-extrabold leading-[1.1] text-center mb-6">
-            Get Your Business{' '}
-            <span
-              className="relative inline-block"
-              style={{
-                background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              Free Scan
-            </span>{' '}
-            Today
-          </h1>
-
-          <p className="text-slate-400 text-lg md:text-xl text-center max-w-2xl mx-auto leading-relaxed mb-10">
-            A senior consultant sits with you for{' '}
-            <span className="text-white font-semibold">30 minutes</span> — live, one-on-one — to
-            diagnose your biggest operational and growth bottlenecks. No pitch. No invoice.{' '}
-            <span className="text-white font-semibold">Just clarity.</span>
-          </p>
-
-          {/* ── Hero CTA Card ── */}
-          <div className="relative max-w-3xl mx-auto">
-            {/* Glowing border effect */}
-            <div className="absolute -inset-px rounded-3xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-40 blur-sm" />
-            <div className="relative bg-slate-900/90 backdrop-blur-xl border border-slate-700/60 rounded-3xl p-8 md:p-12 shadow-2xl overflow-hidden">
-              {/* Inner glow top */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-blue-400/60 to-transparent" />
-
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                {/* Left: scan icon */}
-                <div className="shrink-0">
-                  <div className="relative w-28 h-28">
-                    <div className="absolute inset-0 bg-blue-500/20 rounded-2xl blur-xl animate-pulse" />
-                    <div className="relative w-28 h-28 bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-2xl flex items-center justify-center">
-                      <i className="fa-solid fa-stethoscope text-blue-400 text-5xl animate-pulse" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right: info */}
-                <div className="flex-1 text-center md:text-left">
-                  <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-3">
-                    Business Health Scan
-                  </h2>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                    A live, structured 30-minute diagnostic with a senior BizNex consultant. We scan
-                    your operations, sales flow, and team structure — then hand you a prioritised
-                    action plan within 24 hours.
-                  </p>
-
-                  {/* Badges row */}
-                  <div className="flex flex-wrap gap-2.5 justify-center md:justify-start mb-7">
-                    {[
-                      { icon: 'fa-solid fa-clock',    label: '30 Min Live Session', color: 'text-blue-400 bg-blue-500/10 border-blue-500/20'   },
-                      { icon: 'fa-solid fa-shield-halved', label: 'NDA Protected',       color: 'text-green-400 bg-green-500/10 border-green-500/20' },
-                      { icon: 'fa-solid fa-user-tie', label: 'Senior Consultant',   color: 'text-purple-400 bg-purple-500/10 border-purple-500/20' },
-                      { icon: 'fa-solid fa-tag',      label: 'Zero Cost',           color: 'text-amber-400 bg-amber-500/10 border-amber-500/20' },
-                    ].map((b) => (
-                      <span
-                        key={b.label}
-                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[11px] font-bold uppercase tracking-wider ${b.color} shadow-sm`}
-                      >
-                        <i className={`${b.icon} text-[10px]`} />
-                        {b.label}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* CTA button */}
-                  <Link
-                    to="/book-session"
-                    className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-extrabold text-base bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-xl shadow-blue-600/30 hover:shadow-blue-500/40 transition-all duration-300 hover:scale-[1.03] active:scale-[0.99] group"
-                  >
-                    <i className="fas fa-calendar-plus" />
-                    Book My Free Scan Now
-                    <i className="fas fa-arrow-right group-hover:translate-x-1 transition-transform duration-200" />
-                  </Link>
+            ════════════════════════════════════════ */}
+        <section className="pt-12 pb-16 px-6 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            {/* Left Column: Text Content */}
+            <div className="lg:col-span-7 space-y-8 text-center lg:text-left">
+              {/* Eyebrow */}
+              <div className="flex justify-center lg:justify-start">
+                <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-gradient-to-r from-blue-500/15 to-purple-500/15 border border-blue-500/25 rounded-full">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-400" />
+                  </span>
+                  <span className="text-[10px] font-black text-blue-300 uppercase tracking-widest">
+                    One-on-One · Live · Completely Free
+                  </span>
                 </div>
               </div>
 
-              {/* Bottom micro-trust strip */}
-              <div className="mt-8 pt-6 border-t border-slate-800/60 flex flex-wrap items-center justify-center gap-6 text-xs font-semibold text-slate-500">
+              {/* Title */}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] text-white">
+                Get Your Business{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-[length:200%_auto] animate-shimmer">
+                  Free Scan
+                </span>{' '}
+                Today
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+                A senior consultant sits with you for <strong className="text-white">30 minutes</strong> — live, one-on-one — to diagnose your biggest operational and growth bottlenecks. No pitches. No invoices. Just clarity.
+              </p>
+
+              {/* Badges */}
+              <div className="flex flex-wrap gap-2.5 justify-center lg:justify-start">
                 {[
-                  { icon: 'fa-solid fa-check-circle', color: 'text-green-400',  label: 'No payment required'     },
-                  { icon: 'fa-solid fa-ban',          color: 'text-red-400',    label: 'Zero sales pitch'         },
-                  { icon: 'fa-solid fa-shield-halved',   color: 'text-blue-400',   label: 'NDA-backed confidentiality' },
-                  { icon: 'fa-solid fa-users',        color: 'text-purple-400', label: '100+ businesses diagnosed' },
-                ].map((item, i) => (
-                  <React.Fragment key={item.label}>
-                    {i > 0 && <div className="w-px h-4 bg-slate-800 hidden sm:block" />}
-                    <div className="flex items-center gap-1.5">
-                      <i className={`${item.icon} ${item.color}`} />
-                      {item.label}
-                    </div>
-                  </React.Fragment>
+                  { icon: 'fa-solid fa-clock', label: '30 Min Live Session', color: 'text-blue-400 bg-blue-500/10 border-blue-500/20' },
+                  { icon: 'fa-solid fa-shield-halved', label: 'NDA Protected', color: 'text-green-400 bg-green-500/10 border-green-500/20' },
+                  { icon: 'fa-solid fa-user-tie', label: 'Senior Consultant', color: 'text-purple-400 bg-purple-500/10 border-purple-500/20' },
+                ].map((b) => (
+                  <span
+                    key={b.label}
+                    className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full border text-[10px] font-bold uppercase tracking-wider ${b.color}`}
+                  >
+                    <i className={`${b.icon} text-[9px]`} />
+                    {b.label}
+                  </span>
                 ))}
+              </div>
+
+              {/* CTA button */}
+              <div className="pt-2">
+                <Link
+                  to="/book-session"
+                  className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-extrabold text-base bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-xl shadow-blue-600/30 hover:shadow-blue-500/40 transition-all duration-300 hover:scale-[1.03] active:scale-[0.99] group"
+                >
+                  <i className="fas fa-calendar-plus" />
+                  Book My Free Scan Now
+                  <i className="fas fa-arrow-right group-hover:translate-x-1 transition-transform duration-200" />
+                </Link>
+              </div>
+
+              {/* Trust strip */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs font-semibold text-slate-500 pt-4 border-t border-slate-900/60">
+                {[
+                  { icon: 'fa-solid fa-check-circle', color: 'text-green-400', label: 'No payment required' },
+                  { icon: 'fa-solid fa-ban', color: 'text-red-400', label: 'Zero sales pitch' },
+                  { icon: 'fa-solid fa-lock', color: 'text-blue-400', label: 'NDA confidential' }
+                ].map((item, i) => (
+                  <div key={item.label} className="flex items-center gap-1.5">
+                    <i className={`${item.icon} ${item.color}`} />
+                    {item.label}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column: Beautiful Image Container with Overlays */}
+            <div className="lg:col-span-5 relative group mt-8 lg:mt-0">
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 rounded-3xl blur-md opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+              <div className="relative bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
+                <img
+                  src={meetingImg}
+                  alt="Live 1-on-1 Strategy Meeting"
+                  className="w-full h-[320px] md:h-[400px] object-cover opacity-90 group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+                
+                {/* Floating reviews badge */}
+                <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-sm text-slate-900 px-4 py-2.5 rounded-xl shadow-xl flex items-center gap-2">
+                  <span className="text-yellow-500 text-sm">★★★★★</span>
+                  <span className="text-xs font-black text-slate-900">4.9 rating</span>
+                </div>
+
+                {/* Floating live indicator */}
+                <div className="absolute top-6 left-6 bg-red-600/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg shadow-xl flex items-center gap-2">
+                  <span className="w-2 h-2 bg-white rounded-full animate-ping" />
+                  <span className="text-[10px] font-bold uppercase tracking-wider">LIVE SESSION</span>
+                </div>
               </div>
             </div>
           </div>

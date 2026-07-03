@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import PaymentModal from './PaymentModal';
 import './Pricing.css';
 
@@ -89,8 +90,41 @@ export default function Pricing() {
                     <h2 className="pricing-title">Choose your path</h2>
                     <p className="pricing-subtitle">
                         Transparent pricing. No hidden fees.<br />
-                        Start with a full business scan.
+                        Start with a free business scan.
                     </p>
+                </div>
+
+                {/* ── Free Scan Horizontal Banner ── */}
+                <div className="relative max-w-4xl mx-auto mb-16 px-4 group">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-green-500 via-blue-500 to-indigo-500 rounded-3xl blur-md opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+                    <div className="relative bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-green-200/50 dark:border-green-700/50 shadow-[0_0_30px_rgba(34,197,94,0.1)] dark:shadow-[0_0_40px_rgba(34,197,94,0.2)] flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div className="flex-1 text-center md:text-left">
+                            <div className="flex flex-wrap gap-2 items-center justify-center md:justify-start mb-3">
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-green-500/10 border border-green-500/30 text-green-500 dark:text-green-400">
+                                    🎁 Free Offer
+                                </span>
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-blue-500/10 border border-blue-500/30 text-blue-500 dark:text-blue-400">
+                                    ⏱️ 30-Min Session
+                                </span>
+                            </div>
+                            <h3 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mb-2">
+                                Start with a <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-500">Free Business Scan</span>
+                            </h3>
+                            <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base max-w-xl">
+                                Diagnose your biggest sales, operations, and cashflow bottlenecks live with a senior consultant. Walk away with a written 90-day action plan.
+                            </p>
+                        </div>
+                        <div className="shrink-0 w-full md:w-auto text-center">
+                            <Link
+                                to="/free-scan"
+                                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-base bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-500 hover:to-blue-500 text-white shadow-lg shadow-green-600/20 transition-all duration-300 hover:scale-105"
+                            >
+                                Book Free Scan
+                                <i className="fas fa-arrow-right" />
+                            </Link>
+                            <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-2">No payment info required · NDA-Protected</p>
+                        </div>
+                    </div>
                 </div>
 
                 {/* ── Cards ── */}
@@ -141,13 +175,24 @@ export default function Pricing() {
                             </ul>
 
                             {/* CTA */}
-                            <button
-                                onClick={() => openModal(plan)}
-                                className={`pc-cta pc-cta-${plan.color}${plan.popular ? ' pc-cta-popular' : ''}`}
-                            >
-                                <span>{plan.cta}</span>
-                                <i className="fas fa-arrow-right pc-cta-arrow" />
-                            </button>
+                            {plan.to ? (
+                                <Link
+                                    to={plan.to}
+                                    className={`pc-cta pc-cta-${plan.color} block text-center`}
+                                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textDecoration: 'none' }}
+                                >
+                                    <span>{plan.cta}</span>
+                                    <i className="fas fa-arrow-right pc-cta-arrow" />
+                                </Link>
+                            ) : (
+                                <button
+                                    onClick={() => openModal(plan)}
+                                    className={`pc-cta pc-cta-${plan.color}${plan.popular ? ' pc-cta-popular' : ''}`}
+                                >
+                                    <span>{plan.cta}</span>
+                                    <i className="fas fa-arrow-right pc-cta-arrow" />
+                                </button>
+                            )}
                         </div>
                     ))}
                 </div>

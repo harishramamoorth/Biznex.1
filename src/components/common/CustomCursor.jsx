@@ -55,12 +55,14 @@ export default function CustomCursor() {
     <>
       <div
         className={`custom-cursor-dot ${isHovering ? 'hovering' : ''}`}
-        style={{ left: `${position.x}px`, top: `${position.y}px` }}
+        style={{ transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%)` }}
       />
       <div
-        className={`custom-cursor-outline ${isHovering ? 'hovering' : ''}`}
-        style={{ left: `${position.x}px`, top: `${position.y}px` }}
-      />
+        className="custom-cursor-outline-wrapper"
+        style={{ transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%)` }}
+      >
+        <div className={`custom-cursor-outline ${isHovering ? 'hovering' : ''}`} />
+      </div>
     </>
   );
 }

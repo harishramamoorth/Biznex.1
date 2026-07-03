@@ -4,10 +4,16 @@ import Testimonials from '../components/Testimonials';
 
 export default function About() {
   return (
-    <main className="pt-20">
-      <AboutStrip />
-      <Team />
-      <Testimonials />
+    <main>
+      <div id="story">
+        <AboutStrip />
+      </div>
+      <div id="team">
+        <Team />
+      </div>
+      <div id="reviews">
+        <Testimonials />
+      </div>
     </main>
   );
 }

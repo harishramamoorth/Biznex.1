@@ -148,7 +148,7 @@ export default function Hero() {
                 <div className="flex flex-col items-center md:items-start text-center md:text-left">
                   <div className="text-4xl mb-4">✨</div>
                   <p className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white leading-relaxed">
-                    You're at the right place.
+                     You've found your solution.
                   </p>
                   <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 mt-4 leading-relaxed">
                     We're <strong className="text-blue-600 dark:text-blue-400">BizNex</strong>.
@@ -166,12 +166,12 @@ export default function Hero() {
         </div>
 
         {/* ── CTA Buttons ── */}
-        <div className="hero-text-animate delay-5 mt-12 flex flex-wrap items-center justify-center gap-6">
+        <div className="hero-text-animate delay-5 mt-12 flex flex-wrap items-center justify-center gap-6 z-20 relative">
           <Link
-            to="/pricing"
+            to="/book-session"
             className="btn-primary inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 hover:scale-105 hover:shadow-xl hover:shadow-blue-600/30 transition-all duration-300 w-full sm:w-auto text-center relative overflow-hidden group"
           >
-            <span className="relative z-10">Book a Free Business Scan</span>
+            <span className="relative z-10"> Book a Free Business Scan</span>
             <span className="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
           </Link>
           <Link

@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer';
 import './WhyBizNex.css';
 import builtImg from '../../assets/Built.jpg';
 
-const FeatureCard = ({ icon, title, desc, delay, gradient, badge }) => {
+const FeatureCard = ({ title, desc, delay, gradient }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
@@ -12,9 +12,8 @@ const FeatureCard = ({ icon, title, desc, delay, gradient, badge }) => {
       className={`feature-card ${inView ? 'visible' : ''}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <div className="feature-icon-wrapper" style={{ background: gradient }}>
-        <i className={`fas ${icon}`}></i>
-        <span className="feature-badge">{badge}</span>
+      <div className="feature-point-wrapper">
+        <span className="feature-point" style={{ background: gradient }} />
       </div>
       <div className="feature-content">
         <h4 className="feature-title">{title}</h4>
@@ -27,25 +26,22 @@ const FeatureCard = ({ icon, title, desc, delay, gradient, badge }) => {
 export default function WhyBizNex() {
   const points = [
     {
-      icon: 'fa-chart-pie',
       title: 'Data‑Driven, Not Guesswork',
       desc: 'We’ve scanned 10,000+ real businesses – we know exactly where to look for leaks.',
       gradient: 'linear-gradient(145deg, #2563eb, #3b82f6)',
-      badge: '📊'
+      icon: 'fa-chart-line'
     },
     {
-      icon: 'fa-handshake',
       title: 'Partners, Not Consultants',
       desc: 'We stay in the trenches until you scale. Our success is tied to yours.',
       gradient: 'linear-gradient(145deg, #7c3aed, #8b5cf6)',
-      badge: '🤝'
+      icon: 'fa-handshake'
     },
     {
-      icon: 'fa-rocket',
       title: 'Speed & Execution',
       desc: 'No endless reports. We fix things fast and keep you moving forward.',
       gradient: 'linear-gradient(145deg, #f59e0b, #f97316)',
-      badge: '🚀'
+      icon: 'fa-bolt'
     }
   ];
 
@@ -82,7 +78,6 @@ export default function WhyBizNex() {
                 desc={item.desc}
                 delay={idx * 150}
                 gradient={item.gradient}
-                badge={item.badge}
               />
             ))}
           </div>

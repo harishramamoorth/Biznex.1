@@ -34,9 +34,9 @@ const AnimatedCounter = ({ target, label, suffix = '+', duration = 2000 }) => {
   }, [target, duration, hasAnimated]);
 
   return (
-    <div ref={ref} className="text-center">
-      <div className="text-5xl md:text-6xl font-black text-white">{count}{suffix}</div>
-      <div className="text-sm text-blue-200 font-medium mt-1">{label}</div>
+    <div ref={ref} className="text-center md:text-left">
+      <div className="text-4xl md:text-5xl font-black text-white">{count}{suffix}</div>
+      <div className="text-sm text-blue-200 font-medium mt-2">{label}</div>
     </div>
   );
 };
@@ -158,8 +158,8 @@ export default function AboutStrip() {
             </blockquote>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4">
-              <AnimatedCounter target={10000} label="Scans" suffix="+" />
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-4 mt-8 pt-8 border-t border-slate-700/50">
+              <AnimatedCounter target={10} label="Scans" suffix="K+" />
               <AnimatedCounter target={100} label="Businesses Solved" suffix="+" />
               <AnimatedCounter target={98} label="Satisfaction" suffix="%" />
             </div>

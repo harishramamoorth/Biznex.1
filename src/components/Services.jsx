@@ -56,7 +56,7 @@ export default function Services() {
     {
       number: '01',
       title: 'Business Scan',
-      icon: '📋',
+      // icon: '📋',
       description: 'We perform a comprehensive audit of your entire business – sales, operations, team structure, and cashflow. No assumptions, no vanity metrics.',
       outcome: 'A one‑page diagnosis that pinpoints exactly what\'s killing your growth – not a 50‑slide deck.',
       benefits: ['Unbiased, data‑driven insights', 'Prioritised action list', '30‑min strategy debrief'],
@@ -65,7 +65,7 @@ export default function Services() {
     {
       number: '02',
       title: 'Structure Solve',
-      icon: '🏗️',
+      // icon: '🏗️',
       description: 'Chaos in roles, no SOPs, every day is a crisis? We redesign your organisational structure and create standard operating procedures that stick.',
       outcome: 'Right people in the right roles, working SOPs, and a clear action plan – you\'ll stop fire‑fighting daily.',
       benefits: ['Clear role definitions', 'Documented SOPs', 'On‑boarding framework'],
@@ -74,7 +74,7 @@ export default function Services() {
     {
       number: '03',
       title: 'Strategy Solve',
-      icon: '🗺️',
+      // icon: '🗺️',
       description: 'We build a 6–12 month strategic roadmap that aligns your team, finances, and market positioning. Every step is measurable and achievable.',
       outcome: 'A clear, actionable plan – you\'ll know exactly what to do, when to do it, and why.',
       benefits: ['Strategic clarity', 'KPI‑driven milestones', 'Quarterly reviews'],
@@ -83,7 +83,7 @@ export default function Services() {
     {
       number: '04',
       title: 'Scale Partnership',
-      icon: '🤝',
+      // icon: '🤝',
       description: 'We become your growth partner – executing alongside you, training your team, and course‑correcting weekly until you scale independently.',
       outcome: 'A partner in the trenches with you until you can run solo. We grow when you grow.',
       benefits: ['Dedicated partner', 'Weekly execution reviews', 'Scalable systems'],
@@ -92,7 +92,7 @@ export default function Services() {
     {
       number: '05',
       title: 'Sales Process Fix',
-      icon: '📈',
+      // icon: '📈',
       description: 'We analyse your current sales funnel, identify leaks, and redesign your process to convert more leads into paying customers.',
       outcome: 'A repeatable, predictable sales engine that delivers consistent results.',
       benefits: ['Funnel optimisation', 'Sales playbook', 'Team training'],
@@ -101,7 +101,7 @@ export default function Services() {
     {
       number: '06',
       title: 'Team Performance Lab',
-      icon: '🧠',
+      // icon: '🧠',
       description: 'We assess your team\'s capabilities, design personalised development plans, and implement performance tracking to unlock their full potential.',
       outcome: 'A high‑performing team aligned with your business goals and culture.',
       benefits: ['Competency mapping', 'Coaching programs', 'Performance metrics'],

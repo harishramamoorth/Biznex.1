@@ -117,7 +117,7 @@ export default function FAQ() {
                                     aria-expanded={isOpen}
                                 >
                                     <span className="faq-q-left">
-                                        <span className="faq-emoji">{faq.emoji}</span>
+                                        <span className="faq-point" />
                                         <span className="faq-q-text">{faq.q}</span>
                                     </span>
                                     <span className={`faq-chevron${isOpen ? ' faq-chevron-open' : ''}`}>

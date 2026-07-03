@@ -11,17 +11,14 @@
 
 /* Custom Cursor Base Styles */
 .custom-cursor-dot,
-.custom-cursor-outline {
+.custom-cursor-outline-wrapper {
   position: fixed;
   top: 0;
   left: 0;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
 }
 
-/* Colorful glowing animation */
 @keyframes rainbowGlow {
   0% { filter: hue-rotate(0deg) drop-shadow(0 0 10px #3b82f6); }
   50% { filter: hue-rotate(180deg) drop-shadow(0 0 20px #ec4899); }
@@ -29,13 +26,14 @@
 }
 
 @keyframes spin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .custom-cursor-dot {
   width: 12px;
   height: 12px;
+  border-radius: 50%;
   background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
   animation: rainbowGlow 4s linear infinite;
   transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
@@ -44,6 +42,7 @@
 .custom-cursor-outline {
   width: 44px;
   height: 44px;
+  border-radius: 50%;
   border: 2px solid transparent;
   background: linear-gradient(white, white) padding-box, 
               linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899) border-box;
