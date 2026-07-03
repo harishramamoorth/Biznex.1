@@ -42,8 +42,8 @@ const Stat = ({ target, label, icon, delay }) => {
       {celebrated && (
         <div className="sparkles">
           <span className="sparkle sparkle-1">✨</span>
-          <span className="sparkle sparkle-2">⭐</span>
-          <span className="sparkle sparkle-3">🌟</span>
+          <span className="sparkle sparkle-2">💙</span>
+          <span className="sparkle sparkle-3">✨</span>
         </div>
       )}
     </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import './Services.css';
 
@@ -126,9 +127,9 @@ export default function Services() {
         </div>
 
         <div className="bottom-cta">
-          <a href="#pricing" className="btn-primary">
-            Book a Free Consultation <i className="fas fa-arrow-right"></i>
-          </a>
+          <Link to="/book-session" className="btn-primary">
+            Book Your One-on-One Session <i className="fas fa-arrow-right"></i>
+          </Link>
         </div>
       </div>
     </section>

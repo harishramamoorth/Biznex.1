@@ -14,6 +14,8 @@ import Services from './pages/Services';
 import Process from './pages/Process';
 import Pricing from './pages/Pricing';
 import Contact from './pages/Contact';
+import BookSession from './pages/BookSession';
+import FreeScan from './pages/FreeScan';
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="/process" element={<Process />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/book-session" element={<BookSession />} />
+          <Route path="/free-scan" element={<FreeScan />} />
         </Routes>
       </PageTransition>
       <Footer />

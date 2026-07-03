@@ -52,16 +52,16 @@
 
 /* ── Celebration state ── */
 .stat-card.celebrated {
-  border-color: #fbbf24;
-  background: linear-gradient(135deg, #fffbeb, #fef3c7);
-  box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.2), 0 12px 40px rgba(251, 191, 36, 0.15);
+  border-color: #3b82f6;
+  background: linear-gradient(135deg, #ffffff, #f0f7ff);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15), 0 20px 40px rgba(59, 130, 246, 0.08);
   animation: celebrate-pulse 0.6s ease;
 }
 
 @keyframes celebrate-pulse {
   0% { transform: scale(1); }
-  30% { transform: scale(1.04); }
-  60% { transform: scale(0.98); }
+  30% { transform: scale(1.03); }
+  60% { transform: scale(0.99); }
   100% { transform: scale(1); }
 }
 
@@ -83,14 +83,14 @@
 }
 
 .stat-card.celebrated .stat-icon-wrapper {
-  background: #fbbf24;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
   color: white;
   animation: float-icon 3s ease-in-out infinite, celebrate-icon 0.6s ease;
 }
 
 @keyframes celebrate-icon {
   0% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(1.3) rotate(20deg); }
+  50% { transform: scale(1.2) rotate(15deg); }
   100% { transform: scale(1) rotate(0deg); }
 }
 
@@ -105,18 +105,18 @@
 }
 
 .stat-card.celebrated .stat-icon-wrapper::after {
-  border-color: rgba(251, 191, 36, 0.6);
-  animation: pulse-ring-gold 1.5s ease-out infinite;
+  border-color: rgba(59, 130, 246, 0.4);
+  animation: pulse-ring-blue 1.5s ease-out infinite;
 }
 
-@keyframes pulse-ring-gold {
+@keyframes pulse-ring-blue {
   0% { transform: scale(1); opacity: 0.8; }
   100% { transform: scale(1.8); opacity: 0; }
 }
 
 @keyframes float-icon {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-6px); }
 }
 
 @keyframes pulse-ring {
@@ -129,7 +129,7 @@
   font-size: 3.5rem;
   font-weight: 900;
   line-height: 1.1;
-  background: linear-gradient(135deg, #1e40af, #7c3aed);
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -138,7 +138,7 @@
 }
 
 .stat-card.celebrated .stat-number {
-  background: linear-gradient(135deg, #b45309, #d97706);
+  background: linear-gradient(135deg, #1d4ed8, #6d28d9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

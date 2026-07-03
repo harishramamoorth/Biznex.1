@@ -57,6 +57,18 @@ export default function Navbar() {
                                 {l.label}
                             </NavLink>
                         ))}
+                        {/* Free Scan — special highlighted link */}
+                        <NavLink
+                            to="/free-scan"
+                            className={({ isActive }) =>
+                                `nav-link ${isActive ? 'active' : ''} flex items-center gap-1.5`
+                            }
+                        >
+                            Free Scan
+                            <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-green-500/15 border border-green-500/30 text-green-400">
+                                Free
+                            </span>
+                        </NavLink>
                         <Link to="/contact" className="navbar-cta">
                             Contact
                         </Link>
@@ -97,11 +109,25 @@ export default function Navbar() {
                             {l.label}
                         </NavLink>
                     ))}
+                    {/* Free Scan mobile link */}
+                    <NavLink
+                        to="/free-scan"
+                        style={{ animationDelay: `${links.length * 0.06}s` }}
+                        className={({ isActive }) =>
+                            `mobile-link ${isActive ? 'active' : ''} flex items-center gap-2`
+                        }
+                        onClick={() => setMobileOpen(false)}
+                    >
+                        Free Scan
+                        <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-green-500/15 border border-green-500/30 text-green-400">
+                            Free
+                        </span>
+                    </NavLink>
                     <Link
                         to="/contact"
                         className="mobile-cta"
                         onClick={() => setMobileOpen(false)}
-                        style={{ animationDelay: `${links.length * 0.06}s` }}
+                        style={{ animationDelay: `${(links.length + 1) * 0.06}s` }}
                     >
                         Contact Us
                     </Link>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function StickyCTA() {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,12 +34,12 @@ export default function StickyCTA() {
             Ready to scale?
           </p>
         </div>
-        <a
-          href="#cta"
+        <Link
+          to="/free-scan"
           className="bg-gradient-to-r from-blue-600 to-violet-600 text-white px-5 py-2 sm:px-6 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm hover:from-blue-500 hover:to-violet-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-500/25 active:translate-y-0 active:shadow-md transition-all duration-300 whitespace-nowrap text-center"
         >
           Book Free Scan
-        </a>
+        </Link>
       </div>
     </div>
   );
