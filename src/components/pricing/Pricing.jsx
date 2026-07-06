@@ -8,8 +8,8 @@ const PLANS = [
         name: 'Scan',
         emoji: '🔍',
         icon: 'fa-search',
-        price: '₹4,999',
-        period: 'one-time',
+        monthly: { price: '₹4,999', originalPrice: null, period: 'one-time', cta: 'Start Scan - ₹4,999' },
+        quarterly: { price: '₹4,999', originalPrice: null, period: 'one-time', cta: 'Start Scan - ₹4,999' },
         desc: 'Full business diagnosis – no guesswork',
         color: 'cyan',
         features: [
@@ -20,14 +20,13 @@ const PLANS = [
             { icon: '✅', text: 'Actionable priority list' },
         ],
         popular: false,
-        cta: 'Start Scan',
     },
     {
         name: 'Solve',
         emoji: '⚡',
         icon: 'fa-tools',
-        price: '₹14,999',
-        period: 'month',
+        monthly: { price: '₹22,499', originalPrice: null, period: 'month', cta: 'Start Solving - ₹22,499' },
+        quarterly: { price: '₹33,749', originalPrice: '₹67,497', period: '3 months', cta: 'Start Solving - ₹33,749' },
         desc: 'Fix what\'s broken, fast',
         color: 'blue',
         features: [
@@ -39,14 +38,13 @@ const PLANS = [
             { icon: '💬', text: 'Priority email support' },
         ],
         popular: true,
-        cta: 'Start Solving',
     },
     {
         name: 'Scale',
         emoji: '🚀',
         icon: 'fa-rocket',
-        price: '₹29,999',
-        period: 'month',
+        monthly: { price: '₹44,999', originalPrice: null, period: 'month', cta: 'Start Scaling - ₹44,999' },
+        quarterly: { price: '₹67,499', originalPrice: '₹134,997', period: '3 months', cta: 'Start Scaling - ₹67,499' },
         desc: 'Full‑scale partnership for exponential growth',
         color: 'violet',
         features: [
@@ -58,18 +56,17 @@ const PLANS = [
             { icon: '🌐', text: 'Access to our network of experts' },
         ],
         popular: false,
-        cta: 'Start Scaling',
     },
 ];
-
 
 export default function Pricing() {
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedPlan, setSelectedPlan] = useState(null);
     const [hovered, setHovered] = useState(null);
+    const [billingCycle, setBillingCycle] = useState('quarterly');
 
     const openModal = (plan) => {
-        setSelectedPlan(plan);
+        setSelectedPlan({ ...plan, ...plan[billingCycle] });
         setModalOpen(true);
     };
 
@@ -94,42 +91,32 @@ export default function Pricing() {
                     </p>
                 </div>
 
-                {/* ── Free Scan Horizontal Banner ── */}
-                <div className="relative max-w-4xl mx-auto mb-16 px-4 group">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-green-500 via-blue-500 to-indigo-500 rounded-3xl blur-md opacity-30 group-hover:opacity-50 transition duration-1000"></div>
-                    <div className="relative bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-green-200/50 dark:border-green-700/50 shadow-[0_0_30px_rgba(34,197,94,0.1)] dark:shadow-[0_0_40px_rgba(34,197,94,0.2)] flex flex-col md:flex-row items-center justify-between gap-6">
-                        <div className="flex-1 text-center md:text-left">
-                            <div className="flex flex-wrap gap-2 items-center justify-center md:justify-start mb-3">
-                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-green-500/10 border border-green-500/30 text-green-500 dark:text-green-400">
-                                    🎁 Free Offer
-                                </span>
-                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-blue-500/10 border border-blue-500/30 text-blue-500 dark:text-blue-400">
-                                    ⏱️ 30-Min Session
-                                </span>
-                            </div>
-                            <h3 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mb-2">
-                                Start with a <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-500">Free Business Scan</span>
-                            </h3>
-                            <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base max-w-xl">
-                                Diagnose your biggest sales, operations, and cashflow bottlenecks live with a senior consultant. Walk away with a written 90-day action plan.
-                            </p>
-                        </div>
-                        <div className="shrink-0 w-full md:w-auto text-center">
-                            <Link
-                                to="/free-scan"
-                                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-base bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-500 hover:to-blue-500 text-white shadow-lg shadow-green-600/20 transition-all duration-300 hover:scale-105"
-                            >
-                                Book Free Scan
-                                <i className="fas fa-arrow-right" />
-                            </Link>
-                            <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-2">No payment info required · NDA-Protected</p>
-                        </div>
+                {/* ── Billing Toggle ── */}
+                <div className="flex justify-center items-center mb-12">
+                    <div className="bg-slate-100 dark:bg-slate-800 p-1.5 rounded-full inline-flex flex-wrap sm:flex-nowrap items-center border border-slate-200 dark:border-slate-700 shadow-inner gap-1">
+                        <button 
+                            onClick={() => setBillingCycle('monthly')}
+                            className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 ${billingCycle === 'monthly' ? 'bg-blue-600 text-white shadow-md scale-[1.02]' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-700/50'}`}
+                        >
+                            Pay Monthly
+                        </button>
+                        <button 
+                            onClick={() => setBillingCycle('quarterly')}
+                            className={`px-6 py-2.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ${billingCycle === 'quarterly' ? 'bg-blue-600 text-white shadow-md scale-[1.02]' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-700/50'}`}
+                        >
+                            Pay for 3 Months 
+                            <span className={`px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wider transition-colors duration-300 border ${billingCycle === 'quarterly' ? 'bg-white/20 text-white border-white/30' : 'bg-green-100 dark:bg-green-500/10 text-green-600 dark:text-green-400 border-transparent'}`}>
+                                Save 50%
+                            </span>
+                        </button>
                     </div>
                 </div>
 
                 {/* ── Cards ── */}
                 <div className="pricing-grid">
-                    {PLANS.map((plan, idx) => (
+                    {PLANS.map((plan, idx) => {
+                        const currentPlan = plan[billingCycle];
+                        return (
                         <div
                             key={idx}
                             className={`pricing-card pc-${plan.color}${plan.popular ? ' pc-popular' : ''}${hovered === idx ? ' pc-hovered' : ''}`}
@@ -156,9 +143,21 @@ export default function Pricing() {
                             <p className="pc-desc">{plan.desc}</p>
 
                             {/* Price */}
-                            <div className="pc-price-block">
-                                <span className={`pc-price pc-price-${plan.color}`}>{plan.price}</span>
-                                <span className="pc-period">/ {plan.period}</span>
+                            <div className="pc-price-block flex flex-col items-center">
+                                {currentPlan.originalPrice && (
+                                    <span className="text-slate-400 dark:text-slate-500 line-through text-sm md:text-base mb-1 font-semibold">
+                                        {currentPlan.originalPrice}
+                                    </span>
+                                )}
+                                <div>
+                                    <span className={`pc-price pc-price-${plan.color}`}>{currentPlan.price}</span>
+                                    <span className="pc-period">/ {currentPlan.period}</span>
+                                </div>
+                                {currentPlan.originalPrice && (
+                                    <span className="text-green-500 font-bold text-xs uppercase tracking-wider mt-1 bg-green-500/10 px-2 py-0.5 rounded-full border border-green-500/20">
+                                        50% Off
+                                    </span>
+                                )}
                             </div>
 
                             {/* Divider */}
@@ -175,26 +174,15 @@ export default function Pricing() {
                             </ul>
 
                             {/* CTA */}
-                            {plan.to ? (
-                                <Link
-                                    to={plan.to}
-                                    className={`pc-cta pc-cta-${plan.color} block text-center`}
-                                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textDecoration: 'none' }}
-                                >
-                                    <span>{plan.cta}</span>
-                                    <i className="fas fa-arrow-right pc-cta-arrow" />
-                                </Link>
-                            ) : (
-                                <button
-                                    onClick={() => openModal(plan)}
-                                    className={`pc-cta pc-cta-${plan.color}${plan.popular ? ' pc-cta-popular' : ''}`}
-                                >
-                                    <span>{plan.cta}</span>
-                                    <i className="fas fa-arrow-right pc-cta-arrow" />
-                                </button>
-                            )}
+                            <button
+                                onClick={() => openModal(plan)}
+                                className={`pc-cta pc-cta-${plan.color}${plan.popular ? ' pc-cta-popular' : ''}`}
+                            >
+                                <span>{currentPlan.cta}</span>
+                                <i className="fas fa-arrow-right pc-cta-arrow" />
+                            </button>
                         </div>
-                    ))}
+                    )})}
                 </div>
 
                 {/* ── Footer note ── */}
