@@ -6,9 +6,9 @@ import heroImg from '../../assets/hero-image.jpg';
 import heroVideo from '../../assets/7148575-uhd_3840_2160_25fps.mp4';
 
 const questions = [
-  'Worried about growth?',
-  'Stuck in operations?',
-  'Ready to transform?',
+  'Accelerate growth?',
+  'Streamline operations?',
+  'Next breakthrough?',
 ];
 
 export default function Hero() {
@@ -70,8 +70,8 @@ export default function Hero() {
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-white/90 dark:from-slate-900/80 via-white/70 dark:via-slate-900/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/50 dark:to-slate-900/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/50 dark:from-slate-900/90 via-white/10 dark:via-slate-900/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/30 dark:to-slate-900/80" />
       </div>
 
       {/* Floating particles */}
@@ -86,40 +86,8 @@ export default function Hero() {
       {/* ─── Main Content ────────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-6 w-full relative z-10 py-16 lg:py-24 flex flex-col items-center justify-center h-full">
 
-        {/* Top Badge (always visible) */}
-        <Link to="/pricing" className="relative group hero-text-animate inline-flex items-center justify-center mb-8 transition-all duration-300 hover:scale-[1.02]">
-          {/* Outer Glow */}
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-green-500 via-blue-500 to-indigo-500 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-500"></div>
 
-          {/* Inner Badge */}
-          <div className="relative flex items-center gap-3 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-green-200/50 dark:border-green-800/50 text-sm md:text-base font-bold px-6 py-2.5 rounded-full tracking-wide shadow-xl shadow-green-500/10">
-            {/* Pulsing Dot */}
-            <span className="relative flex h-3 w-3 shrink-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-600 dark:bg-green-500" />
-            </span>
-
-            {/* Text */}
-            <span className="text-slate-800 dark:text-slate-100 flex flex-wrap items-center justify-center gap-1">
-              <span>🎉</span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 dark:from-green-400 dark:to-blue-400 font-black tracking-tight mx-1">
-                Limited Time: 50% Off 3-Month Plans
-              </span>
-              <span className="hidden sm:inline-block opacity-40 mx-1">|</span>
-              <span className="font-semibold text-slate-600 dark:text-slate-300">
-                Scan: <span className="text-green-700 dark:text-green-400">₹4,999</span>
-              </span>
-              <span className="opacity-40 mx-1">•</span>
-              <span className="font-semibold text-slate-600 dark:text-slate-300 flex items-center gap-1">
-                Solve: <span className="text-slate-400 line-through text-sm">₹67,497</span> <span className="text-green-700 dark:text-green-400">₹33,749/3-mo</span>
-              </span>
-              <span className="opacity-40 mx-1">•</span>
-              <span className="font-semibold text-slate-600 dark:text-slate-300 flex items-center gap-1">
-                Scale: <span className="text-slate-400 line-through text-sm">₹134,997</span> <span className="text-green-700 dark:text-green-400">₹67,499/3-mo</span>
-              </span>
-            </span>
-          </div>
-        </Link>
+       
 
         {/* ─── Two‑column container with dynamic positioning ─── */}
         <div className="relative w-full flex flex-col md:flex-row items-center justify-center transition-all duration-1000 ease-in-out">
@@ -144,9 +112,9 @@ export default function Hero() {
                 }}
               >
                 <h2
-                  className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tight ${index === 2
-                      ? 'text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-600 bg-[length:200%_auto] animate-shimmer'
-                      : 'text-slate-900 dark:text-white'
+                  className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tight drop-shadow-lg ${index === 2
+                      ? 'text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-indigo-600 to-blue-700 dark:from-blue-400 dark:via-indigo-400 dark:to-blue-400 bg-[length:200%_auto] animate-shimmer'
+                      : 'text-slate-800 dark:text-white drop-shadow-[0_2px_15px_rgba(255,255,255,0.9)] dark:drop-shadow-none'
                     }`}
                 >
                   {q}
@@ -166,20 +134,29 @@ export default function Hero() {
               {/* Outer Glow */}
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-400 rounded-[1.25rem] blur-md opacity-40 group-hover:opacity-60 transition duration-1000"></div>
 
-              <div className="relative bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl rounded-2xl p-6 md:p-8 lg:p-10 border border-blue-200/50 dark:border-blue-700/50 shadow-[0_0_40px_rgba(59,130,246,0.2)] dark:shadow-[0_0_40px_rgba(59,130,246,0.4)]">
-                <div className="flex flex-col items-center md:items-start text-center md:text-left">
-                  <div className="text-4xl mb-4">✨</div>
-                  <p className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white leading-relaxed">
-                    You've found your solution.
+              <div className="relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl rounded-3xl p-8 md:p-10 lg:p-12 border border-white/60 dark:border-slate-700/60 shadow-2xl shadow-blue-900/5 dark:shadow-blue-900/20">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/0 dark:from-white/5 dark:to-transparent rounded-3xl pointer-events-none"></div>
+                <div className="relative flex flex-col items-center md:items-start text-center md:text-left">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-600/10 border border-blue-600/20 text-blue-700 dark:text-blue-400 text-xs font-black uppercase tracking-wider mb-6">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse"></span>
+                    Scale With Confidence
+                  </div>
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white leading-[1.15] mb-5">
+                    Build a Business That Scales with Confidence.
+                  </h3>
+                  <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
+                    Stop guessing what's holding your business back. We analyze your operations, identify growth opportunities, and implement practical strategies that improve efficiency, profitability, and long-term success.
                   </p>
-                  <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 mt-4 leading-relaxed">
-                    We're <strong className="text-blue-600 dark:text-blue-400">BizNex</strong>.
-                    We scan your business, solve what's broken, and stay with you
-                    till you scale on your own.
-                  </p>
-                  <div className="mt-8 flex items-center gap-2 text-sm font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/50 px-4 py-2 rounded-full border border-slate-200 dark:border-slate-700 w-fit">
-                    <span className="inline-block w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse" />
-                    Trusted by 200+ businesses
+                  <div className="w-full h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-700 to-transparent mb-6"></div>
+                  <div className="flex items-center gap-4 w-full justify-center md:justify-start">
+                    <div className="flex -space-x-3">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 border-2 border-white dark:border-slate-900 flex items-center justify-center text-white text-xs font-bold shadow-sm z-30"><i className="fas fa-chart-line"></i></div>
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 border-2 border-white dark:border-slate-900 flex items-center justify-center text-white text-xs font-bold shadow-sm z-20"><i className="fas fa-bullseye"></i></div>
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 border-2 border-white dark:border-slate-900 flex items-center justify-center text-white text-xs font-bold shadow-sm z-10"><i className="fas fa-rocket"></i></div>
+                    </div>
+                    <p className="text-sm font-extrabold text-slate-800 dark:text-slate-200 leading-tight max-w-[180px]">
+                      Let's Turn Your Vision Into Measurable Success
+                    </p>
                   </div>
                 </div>
               </div>
@@ -187,23 +164,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* ── CTA Buttons ── */}
-        <div className="hero-text-animate delay-5 mt-12 flex flex-wrap items-center justify-center gap-6 z-20 relative">
-          <Link
-            to="/book-session"
-            className="btn-primary inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 hover:scale-105 hover:shadow-xl hover:shadow-blue-600/30 transition-all duration-300 w-full sm:w-auto text-center relative overflow-hidden group"
-          >
-            <span className="relative z-10"> Book a Free Business Scan</span>
-            <span className="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-          </Link>
-          <Link
-            to="/process"
-            className="text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-white font-medium transition-colors duration-200 underline-offset-4 hover:underline w-full sm:w-auto text-center py-2 group"
-          >
-            See how we work
-            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-          </Link>
-        </div>
+
 
         {/* ── Stats ── */}
         <div className="hero-text-animate delay-6 mt-12 flex flex-wrap items-center justify-center gap-8 text-base">

@@ -201,3 +201,32 @@
 .sparkle-1 { --tx: 50px; --ty: -70px; }
 .sparkle-2 { --tx: -40px; --ty: -50px; }
 .sparkle-3 { --tx: 30px; --ty: -80px; }
+
+/* Dark Mode Overrides */
+.dark .social-proof {
+  background: #0f172a;
+  border-top: 1px solid #1e293b;
+  border-bottom: 1px solid #1e293b;
+}
+
+.dark .stat-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.dark .stat-card:hover {
+  background: #1e293b;
+  border-color: #3b82f6;
+  box-shadow: 0 20px 50px -10px rgba(37, 99, 235, 0.3);
+}
+
+.dark .stat-card.celebrated {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3), 0 20px 40px rgba(59, 130, 246, 0.2);
+}
+
+.dark .stat-label {
+  color: #94a3b8;
+}

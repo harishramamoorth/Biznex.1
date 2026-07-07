@@ -147,7 +147,7 @@ export default function BookSession() {
     formData.company.trim().length > 1;
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white relative overflow-hidden">
+    <main className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white relative overflow-hidden">
       {/* ── Ambient background glows ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-blue-600/8 rounded-full blur-[100px]" />
@@ -168,7 +168,7 @@ export default function BookSession() {
         {/* ── Top nav bar ── */}
         <div className="px-6 pt-8 pb-0 max-w-6xl mx-auto">
           <div className="flex items-center justify-between">
-            <Link to="/" className="inline-flex items-center text-sm font-semibold text-slate-400 hover:text-white transition-colors duration-200 group">
+            <Link to="/" className="inline-flex items-center text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:text-white transition-colors duration-200 group">
               <i className="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
               Back to Home
             </Link>
@@ -199,27 +199,27 @@ export default function BookSession() {
               Change Your Business
             </span>
           </h1>
-          <p className="mt-5 text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-5 text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             Sit down privately with our senior consulting team. We scan your operations, surface the real bottlenecks, and hand you a clear path forward — no fluff, no pitch.
           </p>
 
           {/* Trust bar */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs font-semibold text-slate-400">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs font-semibold text-slate-600 dark:text-slate-400">
             <div className="flex items-center gap-2">
               <i className="fas fa-check-circle text-green-400" />
               <span>Zero commitment required</span>
             </div>
-            <div className="w-px h-4 bg-slate-800 hidden sm:block" />
+            <div className="w-px h-4 bg-slate-100 dark:bg-slate-800 hidden sm:block" />
             <div className="flex items-center gap-2">
               <i className="fas fa-lock text-blue-400" />
               <span>NDA-backed confidentiality</span>
             </div>
-            <div className="w-px h-4 bg-slate-800 hidden sm:block" />
+            <div className="w-px h-4 bg-slate-100 dark:bg-slate-800 hidden sm:block" />
             <div className="flex items-center gap-2">
               <i className="fas fa-users text-purple-400" />
               <span>100+ businesses diagnosed</span>
             </div>
-            <div className="w-px h-4 bg-slate-800 hidden sm:block" />
+            <div className="w-px h-4 bg-slate-100 dark:bg-slate-800 hidden sm:block" />
             <div className="flex items-center gap-2">
               <i className="fas fa-star text-amber-400" />
               <span>Senior consultant, not a junior rep</span>
@@ -238,20 +238,20 @@ export default function BookSession() {
                     <div
                       className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-extrabold border-2 transition-all duration-300 ${
                         bookingStep === s.num
-                          ? 'bg-blue-600 border-blue-500 text-white shadow-lg shadow-blue-500/30 scale-110'
+                          ? 'bg-blue-600 border-blue-500 text-slate-900 dark:text-white shadow-lg shadow-blue-500/30 scale-110'
                           : bookingStep > s.num
-                          ? 'bg-green-600 border-green-500 text-white'
-                          : 'bg-slate-900 border-slate-700 text-slate-500'
+                          ? 'bg-green-600 border-green-500 text-slate-900 dark:text-white'
+                          : 'bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-700 text-slate-500'
                       }`}
                     >
                       {bookingStep > s.num ? <i className="fas fa-check text-xs" /> : s.num}
                     </div>
-                    <span className={`mt-1.5 text-[10px] font-bold uppercase tracking-wider ${bookingStep >= s.num ? 'text-slate-300' : 'text-slate-600'}`}>
+                    <span className={`mt-1.5 text-[10px] font-bold uppercase tracking-wider ${bookingStep >= s.num ? 'text-slate-700 dark:text-slate-300' : 'text-slate-600'}`}>
                       {s.label}
                     </span>
                   </div>
                   {idx < STEPS.length - 1 && (
-                    <div className={`w-20 h-px mb-4 mx-1 transition-all duration-500 ${bookingStep > s.num ? 'bg-green-500/60' : 'bg-slate-800'}`} />
+                    <div className={`w-20 h-px mb-4 mx-1 transition-all duration-500 ${bookingStep > s.num ? 'bg-green-500/60' : 'bg-slate-100 dark:bg-slate-800'}`} />
                   )}
                 </React.Fragment>
               ))}
@@ -260,7 +260,7 @@ export default function BookSession() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               {/* Left: Value panel */}
               <aside className="lg:col-span-4 space-y-5 lg:sticky lg:top-28">
-                <div className="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-6 space-y-5">
+                <div className="bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6 space-y-5">
                   <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">What You'll Get</p>
                   {FEATURES.map((f) => {
                     const c = colorMap[f.color];
@@ -285,13 +285,13 @@ export default function BookSession() {
                       <i key={i} className="fas fa-star text-amber-400 text-xs" />
                     ))}
                   </div>
-                  <p className="text-slate-300 text-xs leading-relaxed italic">
+                  <p className="text-slate-700 dark:text-slate-300 text-xs leading-relaxed italic">
                     "The 30-minute session alone identified 3 operational leaks costing us ₹4L/month. We signed on for the Solve plan the same day."
                   </p>
                   <div className="mt-4 flex items-center gap-2.5">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center font-bold text-xs">R</div>
                     <div>
-                      <p className="text-xs font-bold text-white">Rahul M.</p>
+                      <p className="text-xs font-bold text-slate-900 dark:text-white">Rahul M.</p>
                       <p className="text-[10px] text-slate-500">Founder, D2C Brand · 42 employees</p>
                     </div>
                   </div>
@@ -299,15 +299,15 @@ export default function BookSession() {
               </aside>
 
               {/* Right: Scheduler panel */}
-              <div className="lg:col-span-8 bg-slate-900/60 backdrop-blur-md border border-slate-800 rounded-3xl shadow-2xl overflow-hidden">
+              <div className="lg:col-span-8 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl overflow-hidden">
                 {/* Panel header */}
-                <div className="px-8 pt-7 pb-0 border-b border-slate-800/60 pb-5">
+                <div className="px-8 pt-7 pb-0 border-b border-slate-200 dark:border-slate-800/60 pb-5">
                   <div className="flex items-start justify-between">
                     <div>
-                      <h2 className="text-xl font-extrabold text-white">
+                      <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">
                         {bookingStep === 1 ? '1. Choose Your Date & Time' : '2. Tell Us About You'}
                       </h2>
-                      <p className="text-slate-400 text-xs mt-1">
+                      <p className="text-slate-600 dark:text-slate-400 text-xs mt-1">
                         {bookingStep === 1
                           ? 'All times shown in your local timezone. Slots fill fast.'
                           : 'So we can prepare a custom agenda before the session.'}
@@ -316,7 +316,7 @@ export default function BookSession() {
                     {bookingStep === 2 && (
                       <button
                         onClick={() => setBookingStep(1)}
-                        className="text-xs text-slate-400 hover:text-white flex items-center gap-1.5 font-semibold bg-slate-800/80 px-3 py-1.5 rounded-lg transition-all hover:bg-slate-700/80"
+                        className="text-xs text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:text-white flex items-center gap-1.5 font-semibold bg-slate-100 dark:bg-slate-800/80 px-3 py-1.5 rounded-lg transition-all hover:bg-slate-200 dark:bg-slate-700/80"
                       >
                         <i className="fas fa-chevron-left text-[9px]" /> Change
                       </button>
@@ -338,15 +338,15 @@ export default function BookSession() {
                             type="button"
                             onClick={prevMonth}
                             disabled={calYear === today.getFullYear() && calMonth === today.getMonth()}
-                            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800 border border-slate-600 text-white font-bold text-xs hover:bg-blue-600 hover:border-blue-500 transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-slate-800 disabled:hover:border-slate-600"
+                            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-600 text-slate-900 dark:text-white font-bold text-xs hover:bg-blue-600 hover:border-blue-500 transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-slate-100 dark:bg-slate-800 disabled:hover:border-slate-600"
                           >
                             <i className="fas fa-chevron-left" /> Prev
                           </button>
-                          <span className="text-sm font-extrabold text-white tracking-wide">{monthName}</span>
+                          <span className="text-sm font-extrabold text-slate-900 dark:text-white tracking-wide">{monthName}</span>
                           <button
                             type="button"
                             onClick={nextMonth}
-                            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800 border border-slate-600 text-white font-bold text-xs hover:bg-blue-600 hover:border-blue-500 transition-all duration-200"
+                            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-600 text-slate-900 dark:text-white font-bold text-xs hover:bg-blue-600 hover:border-blue-500 transition-all duration-200"
                           >
                             Next <i className="fas fa-chevron-right" />
                           </button>
@@ -380,12 +380,12 @@ export default function BookSession() {
                                 title={booked ? 'This date is fully booked' : weekend ? 'Weekends unavailable' : past ? 'Past date' : ''}
                                 className={`relative h-9 w-full rounded-xl text-sm font-bold flex flex-col items-center justify-center transition-all duration-200 ${
                                   selected
-                                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 scale-105'
+                                    ? 'bg-blue-600 text-slate-900 dark:text-white shadow-lg shadow-blue-600/30 scale-105'
                                     : booked
-                                    ? 'bg-slate-900/40 text-slate-700 cursor-not-allowed'
+                                    ? 'bg-white/50 dark:bg-slate-900/50 text-slate-700 cursor-not-allowed'
                                     : past || weekend
                                     ? 'text-slate-700 cursor-not-allowed'
-                                    : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:bg-slate-800 hover:text-slate-900 dark:text-white'
                                 }`}
                               >
                                 {/* Today ring */}
@@ -406,10 +406,10 @@ export default function BookSession() {
 
                       {/* Live summary strip – shown when date is picked */}
                       {selectedDate && (
-                        <div className="mb-5 px-4 py-3 bg-slate-900/80 border border-slate-800 rounded-xl flex items-center justify-between">
+                        <div className="mb-5 px-4 py-3 bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-xl flex items-center justify-between">
                           <div className="flex items-center gap-2 text-sm">
                             <i className="fas fa-calendar-day text-blue-400 text-xs" />
-                            <span className="font-bold text-white">{formatDate(selectedDate)}</span>
+                            <span className="font-bold text-slate-900 dark:text-white">{formatDate(selectedDate)}</span>
                           </div>
                           <div className="flex items-center gap-3">
                             {selectedTime ? (
@@ -420,7 +420,7 @@ export default function BookSession() {
                             ) : (
                               <span className="text-[10px] text-slate-500 font-semibold">Pick a time ↓</span>
                             )}
-                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full border border-slate-700 text-slate-400">
+                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400">
                               {availableCount} slot{availableCount !== 1 ? 's' : ''} left
                             </span>
                           </div>
@@ -443,10 +443,10 @@ export default function BookSession() {
                               onClick={() => !isBooked && setSelectedTime(slot.time)}
                               className={`relative py-4 px-3 rounded-2xl border font-bold text-sm text-center transition-all duration-300 flex flex-col items-center gap-1 overflow-hidden ${
                                 isBooked
-                                  ? 'bg-slate-900/50 border-slate-800/50 text-slate-700 cursor-not-allowed'
+                                  ? 'bg-white/50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-800/50 text-slate-700 cursor-not-allowed'
                                   : isSel
-                                  ? 'bg-blue-600 border-blue-500 text-white shadow-lg shadow-blue-600/20'
-                                  : 'bg-slate-950/80 border-slate-800 text-slate-300 hover:border-blue-600/40 hover:bg-slate-900 group'
+                                  ? 'bg-blue-600 border-blue-500 text-slate-900 dark:text-white shadow-lg shadow-blue-600/20'
+                                  : 'bg-slate-50 dark:bg-slate-50/80 dark:bg-slate-950/80 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-blue-600/40 hover:bg-white dark:bg-slate-900 group'
                               }`}
                             >
                               {/* Diagonal strikethrough overlay for booked */}
@@ -470,7 +470,7 @@ export default function BookSession() {
                                   <i className="fas fa-lock text-[7px]" /> Booked
                                 </span>
                               ) : (
-                                <span className={`text-[10px] font-medium ${ isSel ? 'text-blue-200' : 'text-slate-600 group-hover:text-slate-400' }`}>
+                                <span className={`text-[10px] font-medium ${ isSel ? 'text-blue-200' : 'text-slate-600 group-hover:text-slate-600 dark:text-slate-400' }`}>
                                   {slot.period}
                                 </span>
                               )}
@@ -486,8 +486,8 @@ export default function BookSession() {
                         onClick={() => setBookingStep(2)}
                         className={`w-full py-4 rounded-2xl font-extrabold text-base transition-all duration-300 flex items-center justify-center gap-3 ${
                           selectedDate && selectedTime
-                            ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-xl shadow-blue-600/25 active:scale-[0.99]'
-                            : 'bg-slate-900 text-slate-600 cursor-not-allowed border border-slate-800'
+                            ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-slate-900 dark:text-white shadow-xl shadow-blue-600/25 active:scale-[0.99]'
+                            : 'bg-white dark:bg-slate-900 text-slate-600 cursor-not-allowed border border-slate-200 dark:border-slate-800'
                         }`}
                       >
                         {selectedDate && selectedTime ? (
@@ -509,8 +509,8 @@ export default function BookSession() {
                             <i className="fas fa-calendar-check text-sm" />
                           </div>
                           <div>
-                            <p className="text-xs font-bold text-white">{formatDate(selectedDate)}</p>
-                            <p className="text-[11px] text-slate-400">{selectedTime} · 30 minutes · {formData.platform || 'Google Meet'}</p>
+                            <p className="text-xs font-bold text-slate-900 dark:text-white">{formatDate(selectedDate)}</p>
+                            <p className="text-[11px] text-slate-600 dark:text-slate-400">{selectedTime} · 30 minutes · {formData.platform || 'Google Meet'}</p>
                           </div>
                         </div>
                         <span className="text-[10px] bg-green-500/10 border border-green-500/20 text-green-400 px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">
@@ -531,7 +531,7 @@ export default function BookSession() {
                               placeholder="John Doe"
                               value={formData.name}
                               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                              className="w-full px-4 py-3.5 bg-slate-950/80 border border-slate-700/80 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-slate-600 transition-all text-sm"
+                              className="w-full px-4 py-3.5 bg-slate-50 dark:bg-slate-50/80 dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700/80 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-900 dark:text-white placeholder-slate-600 transition-all text-sm"
                             />
                           </div>
                           <div>
@@ -544,7 +544,7 @@ export default function BookSession() {
                               placeholder="john@company.com"
                               value={formData.email}
                               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                              className="w-full px-4 py-3.5 bg-slate-950/80 border border-slate-700/80 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-slate-600 transition-all text-sm"
+                              className="w-full px-4 py-3.5 bg-slate-50 dark:bg-slate-50/80 dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700/80 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-900 dark:text-white placeholder-slate-600 transition-all text-sm"
                             />
                           </div>
                         </div>
@@ -559,7 +559,7 @@ export default function BookSession() {
                             placeholder="e.g. Acme Corp"
                             value={formData.company}
                             onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                            className="w-full px-4 py-3.5 bg-slate-950/80 border border-slate-700/80 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-slate-600 transition-all text-sm"
+                            className="w-full px-4 py-3.5 bg-slate-50 dark:bg-slate-50/80 dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700/80 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-900 dark:text-white placeholder-slate-600 transition-all text-sm"
                           />
                         </div>
 
@@ -572,7 +572,7 @@ export default function BookSession() {
                             placeholder="e.g. We're losing leads in our sales process. Operations feel chaotic. Cashflow is unpredictable..."
                             value={formData.focus}
                             onChange={(e) => setFormData({ ...formData, focus: e.target.value })}
-                            className="w-full px-4 py-3.5 bg-slate-950/80 border border-slate-700/80 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-slate-600 resize-none transition-all text-sm"
+                            className="w-full px-4 py-3.5 bg-slate-50 dark:bg-slate-50/80 dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700/80 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-900 dark:text-white placeholder-slate-600 resize-none transition-all text-sm"
                           />
                           <p className="mt-1.5 text-[10px] text-slate-600">Helps us prepare a specific agenda before the session.</p>
                         </div>
@@ -597,8 +597,8 @@ export default function BookSession() {
                                   onClick={() => setFormData({ ...formData, platform: p.id })}
                                   className={`flex flex-col items-center gap-2 py-4 px-2 rounded-2xl border font-bold text-xs transition-all duration-200 ${
                                     active
-                                      ? `${p.activeBg} ${p.activeBorder} text-white shadow-lg`
-                                      : `bg-slate-950/80 ${p.border} ${p.color} hover:scale-[1.03]`
+                                      ? `${p.activeBg} ${p.activeBorder} text-slate-900 dark:text-white shadow-lg`
+                                      : `bg-slate-50 dark:bg-slate-50/80 dark:bg-slate-950/80 ${p.border} ${p.color} hover:scale-[1.03]`
                                   }`}
                                 >
                                   <i className={`fas ${p.icon} text-lg`} />
@@ -615,8 +615,8 @@ export default function BookSession() {
                           disabled={!isFormValid() || isSubmitting}
                           className={`w-full py-4 rounded-2xl font-extrabold text-base transition-all duration-300 flex items-center justify-center gap-3 ${
                             isFormValid() && !isSubmitting
-                              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-xl shadow-blue-600/25 active:scale-[0.99]'
-                              : 'bg-slate-900 text-slate-600 cursor-not-allowed border border-slate-800'
+                              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-slate-900 dark:text-white shadow-xl shadow-blue-600/25 active:scale-[0.99]'
+                              : 'bg-white dark:bg-slate-900 text-slate-600 cursor-not-allowed border border-slate-200 dark:border-slate-800'
                           }`}
                         >
                           {isSubmitting ? (
@@ -646,7 +646,7 @@ export default function BookSession() {
         ) : (
           /* ── SUCCESS SCREEN ── */
           <div className="px-6 pb-24 pt-4 max-w-3xl mx-auto">
-            <div className="bg-slate-900/60 backdrop-blur-md border border-slate-800 rounded-3xl shadow-2xl overflow-hidden">
+            <div className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl overflow-hidden">
               {/* Top gradient accent */}
               <div className="h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
 
@@ -660,43 +660,43 @@ export default function BookSession() {
                 </div>
 
                 <span className="text-[10px] font-bold uppercase tracking-widest text-green-400 block mb-3">Session Locked In</span>
-                <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
+                <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-4">
                   You're All Set, {formData.name.split(' ')[0]}!
                 </h2>
-                <p className="text-slate-400 text-base max-w-lg mx-auto leading-relaxed mb-10">
-                  A calendar invite and {formData.platform} link are on their way to <span className="text-white font-semibold">{formData.email}</span>. Our consultant will review your session brief before joining — no cold starts.
+                <p className="text-slate-600 dark:text-slate-400 text-base max-w-lg mx-auto leading-relaxed mb-10">
+                  A calendar invite and {formData.platform} link are on their way to <span className="text-slate-900 dark:text-white font-semibold">{formData.email}</span>. Our consultant will review your session brief before joining — no cold starts.
                 </p>
 
                 {/* Booking summary card */}
-                <div className="bg-slate-950/80 border border-slate-800 rounded-2xl max-w-md mx-auto text-left overflow-hidden mb-10">
-                  <div className="px-5 py-3 border-b border-slate-800 bg-slate-900/40">
+                <div className="bg-slate-50 dark:bg-slate-50/80 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md mx-auto text-left overflow-hidden mb-10">
+                  <div className="px-5 py-3 border-b border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50">
                     <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Session Summary</p>
                   </div>
                   <div className="p-5 space-y-3.5 text-sm">
                     <div className="flex items-center gap-3">
                       <i className="fas fa-calendar text-blue-400 w-4 text-center" />
-                      <span className="text-slate-400">Date &amp; Time</span>
-                      <span className="ml-auto font-bold text-white">{formatShortDate(selectedDate)}, {selectedTime}</span>
+                      <span className="text-slate-600 dark:text-slate-400">Date &amp; Time</span>
+                      <span className="ml-auto font-bold text-slate-900 dark:text-white">{formatShortDate(selectedDate)}, {selectedTime}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <i className="fas fa-clock text-purple-400 w-4 text-center" />
-                      <span className="text-slate-400">Duration</span>
-                      <span className="ml-auto font-bold text-white">30 minutes</span>
+                      <span className="text-slate-600 dark:text-slate-400">Duration</span>
+                      <span className="ml-auto font-bold text-slate-900 dark:text-white">30 minutes</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <i className="fas fa-video text-green-400 w-4 text-center" />
-                      <span className="text-slate-400">Platform</span>
-                      <span className="ml-auto font-bold text-white">{formData.platform}</span>
+                      <span className="text-slate-600 dark:text-slate-400">Platform</span>
+                      <span className="ml-auto font-bold text-slate-900 dark:text-white">{formData.platform}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <i className="fas fa-user-tie text-amber-400 w-4 text-center" />
-                      <span className="text-slate-400">Host</span>
-                      <span className="ml-auto font-bold text-white">BizNex Senior Consultant</span>
+                      <span className="text-slate-600 dark:text-slate-400">Host</span>
+                      <span className="ml-auto font-bold text-slate-900 dark:text-white">BizNex Senior Consultant</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <i className="fas fa-building text-slate-400 w-4 text-center" />
-                      <span className="text-slate-400">Company</span>
-                      <span className="ml-auto font-bold text-white">{formData.company}</span>
+                      <i className="fas fa-building text-slate-600 dark:text-slate-400 w-4 text-center" />
+                      <span className="text-slate-600 dark:text-slate-400">Company</span>
+                      <span className="ml-auto font-bold text-slate-900 dark:text-white">{formData.company}</span>
                     </div>
                   </div>
                 </div>
@@ -710,11 +710,11 @@ export default function BookSession() {
                     { icon: 'fa-rocket', color: 'text-green-400', label: 'Session day', desc: 'Jump in. Leave with clarity.' },
                   ].map((item) => (
                     <div key={item.label} className="flex items-start gap-3">
-                      <div className={`mt-0.5 w-7 h-7 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center ${item.color} shrink-0`}>
+                      <div className={`mt-0.5 w-7 h-7 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center ${item.color} shrink-0`}>
                         <i className={`fas ${item.icon} text-xs`} />
                       </div>
                       <div>
-                        <p className="text-sm font-bold text-slate-200">{item.label}</p>
+                        <p className="text-sm font-bold text-slate-800 dark:text-slate-200">{item.label}</p>
                         <p className="text-xs text-slate-500">{item.desc}</p>
                       </div>
                     </div>
@@ -725,7 +725,7 @@ export default function BookSession() {
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <Link
                     to="/"
-                    className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-8 py-4 rounded-2xl font-extrabold transition-all duration-300 flex items-center justify-center gap-2 shadow-xl shadow-blue-600/20"
+                    className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-slate-900 dark:text-white px-8 py-4 rounded-2xl font-extrabold transition-all duration-300 flex items-center justify-center gap-2 shadow-xl shadow-blue-600/20"
                   >
                     <i className="fas fa-home" /> Go to Home
                   </Link>
@@ -736,7 +736,7 @@ export default function BookSession() {
                       setSelectedTime(null);
                       setFormData({ name: '', email: '', company: '', focus: '' });
                     }}
-                    className="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white px-8 py-4 rounded-2xl font-extrabold transition-all duration-300 flex items-center justify-center gap-2"
+                    className="bg-white dark:bg-slate-900 hover:bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:text-white px-8 py-4 rounded-2xl font-extrabold transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <i className="fas fa-redo text-sm" /> Book Another
                   </button>

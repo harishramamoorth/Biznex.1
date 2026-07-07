@@ -332,3 +332,62 @@
   .faq-bottom-card { padding: 22px 20px; flex-direction: column; align-items: flex-start; }
   .faq-bottom-btn { width: 100%; justify-content: center; }
 }
+
+/* Dark Mode Overrides */
+.dark .faq-section {
+  background: #020617;
+}
+
+.dark .faq-title {
+  color: #f8fafc;
+}
+
+.dark .faq-subtitle {
+  color: #94a3b8;
+}
+
+.dark .faq-tab {
+  background: #1e293b;
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+.dark .faq-tab-active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.dark .faq-item {
+  background: #0f172a;
+  border-color: #1e293b;
+}
+
+.dark .faq-item-open {
+  border-color: #3b82f6;
+  box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.15);
+}
+
+.dark .faq-q-text {
+  color: #f8fafc;
+}
+
+.dark .faq-answer {
+  color: #cbd5e1;
+  border-top-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark .faq-bottom-card {
+  background: #0f172a;
+  border-color: #1e293b;
+  box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.4);
+}
+
+.dark .faq-bottom-title {
+  color: #f8fafc;
+}
+
+.dark .faq-bottom-desc {
+  color: #94a3b8;
+}
+

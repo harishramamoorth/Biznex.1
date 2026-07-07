@@ -271,3 +271,51 @@
     font-size: 0.75rem;
   }
 }
+
+/* Dark Mode Overrides */
+.dark .why-biznex {
+  background: linear-gradient(145deg, #0f172a 0%, #020617 100%);
+}
+
+.dark .why-biznex::before {
+  background: radial-gradient(ellipse at 30% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 60%);
+}
+
+.dark .section-title {
+  color: #f8fafc;
+}
+
+.dark .section-subtitle {
+  color: #94a3b8;
+}
+
+.dark .image-overlay {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.dark .image-badge {
+  color: #60a5fa;
+}
+
+.dark .feature-card {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 8px 30px -6px rgba(0, 0, 0, 0.3);
+}
+
+.dark .feature-card:hover {
+  background: #1e293b;
+  border-color: #3b82f6;
+  box-shadow: 0 16px 40px -10px rgba(37, 99, 235, 0.3);
+}
+
+.dark .feature-title {
+  color: #f8fafc;
+}
+
+.dark .feature-desc {
+  color: #cbd5e1;
+}

@@ -115,7 +115,7 @@ export default function FreeScan() {
   const [hovered, setHovered] = useState(null);
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white relative overflow-hidden">
+    <main className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white relative overflow-hidden">
       {/* ── Ambient glows ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-40 -left-40 w-[700px] h-[700px] bg-blue-600/8 rounded-full blur-[120px]" />
@@ -141,7 +141,7 @@ export default function FreeScan() {
           <div className="flex items-center justify-between">
             <Link
               to="/"
-              className="inline-flex items-center text-sm font-semibold text-slate-400 hover:text-white transition-colors duration-200 group"
+              className="inline-flex items-center text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:text-white transition-colors duration-200 group"
             >
               <i className="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
               Back to Home
@@ -174,7 +174,7 @@ export default function FreeScan() {
               </div>
 
               {/* Title */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] text-white">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] text-slate-900 dark:text-white">
                 Get Your Business{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-[length:200%_auto] animate-shimmer">
                   Free Scan
@@ -183,8 +183,8 @@ export default function FreeScan() {
               </h1>
 
               {/* Subtitle */}
-              <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
-                A senior consultant sits with you for <strong className="text-white">30 minutes</strong> — live, one-on-one — to diagnose your biggest operational and growth bottlenecks. No pitches. No invoices. Just clarity.
+              <p className="text-slate-600 dark:text-slate-400 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+                A senior consultant sits with you for <strong className="text-slate-900 dark:text-white">30 minutes</strong> — live, one-on-one — to diagnose your biggest operational and growth bottlenecks. No pitches. No invoices. Just clarity.
               </p>
 
               {/* Badges */}
@@ -208,7 +208,7 @@ export default function FreeScan() {
               <div className="pt-2">
                 <Link
                   to="/book-session"
-                  className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-extrabold text-base bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-xl shadow-blue-600/30 hover:shadow-blue-500/40 transition-all duration-300 hover:scale-[1.03] active:scale-[0.99] group"
+                  className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-extrabold text-base bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-slate-900 dark:text-white shadow-xl shadow-blue-600/30 hover:shadow-blue-500/40 transition-all duration-300 hover:scale-[1.03] active:scale-[0.99] group"
                 >
                   <i className="fas fa-calendar-plus" />
                   Book My Free Scan Now
@@ -234,7 +234,7 @@ export default function FreeScan() {
             {/* Right Column: Beautiful Image Container with Overlays */}
             <div className="lg:col-span-5 relative group mt-8 lg:mt-0">
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 rounded-3xl blur-md opacity-30 group-hover:opacity-50 transition duration-1000"></div>
-              <div className="relative bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
+              <div className="relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
                 <img
                   src={meetingImg}
                   alt="Live 1-on-1 Strategy Meeting"
@@ -249,7 +249,7 @@ export default function FreeScan() {
                 </div>
 
                 {/* Floating live indicator */}
-                <div className="absolute top-6 left-6 bg-red-600/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg shadow-xl flex items-center gap-2">
+                <div className="absolute top-6 left-6 bg-red-600/90 backdrop-blur-sm text-slate-900 dark:text-white px-3 py-1.5 rounded-lg shadow-xl flex items-center gap-2">
                   <span className="w-2 h-2 bg-white rounded-full animate-ping" />
                   <span className="text-[10px] font-bold uppercase tracking-wider">LIVE SESSION</span>
                 </div>
@@ -267,13 +267,13 @@ export default function FreeScan() {
               <i className="fas fa-search text-purple-400 text-xs" />
               <span className="text-xs font-bold text-purple-300 uppercase tracking-widest">What We Scan</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-4">
               6 Critical Areas Covered in{' '}
               <span style={{ background: 'linear-gradient(135deg,#8b5cf6,#3b82f6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                 30 Minutes
               </span>
             </h2>
-            <p className="text-slate-400 text-base max-w-xl mx-auto">
+            <p className="text-slate-600 dark:text-slate-400 text-base max-w-xl mx-auto">
               We don't skim the surface. Each area is probed with pointed questions that uncover the root cause — not just the symptom.
             </p>
           </div>
@@ -290,7 +290,7 @@ export default function FreeScan() {
                   className={`relative group p-6 rounded-2xl border transition-all duration-300 cursor-default ${
                     isHov
                       ? `${c.bg} ${c.border} shadow-xl scale-[1.02]`
-                      : 'bg-slate-900/40 border-slate-800/70 hover:border-slate-700'
+                      : 'bg-white/50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-800/70 hover:border-slate-300 dark:border-slate-700'
                   }`}
                 >
                   <span className="absolute top-4 right-4 text-[10px] font-black text-slate-700 tracking-wider">
@@ -299,8 +299,8 @@ export default function FreeScan() {
                   <div className={`w-11 h-11 rounded-xl ${c.bg} border ${c.border} flex items-center justify-center ${c.text} mb-4 transition-transform duration-300 group-hover:scale-110`}>
                     <i className={`${item.icon} text-base`} />
                   </div>
-                  <h3 className="font-extrabold text-white text-base mb-2 leading-snug">{item.title}</h3>
-                  <p className="text-slate-500 text-xs leading-relaxed group-hover:text-slate-400 transition-colors">{item.desc}</p>
+                  <h3 className="font-extrabold text-slate-900 dark:text-white text-base mb-2 leading-snug">{item.title}</h3>
+                  <p className="text-slate-500 text-xs leading-relaxed group-hover:text-slate-600 dark:text-slate-400 transition-colors">{item.desc}</p>
                 </div>
               );
             })}
@@ -316,10 +316,10 @@ export default function FreeScan() {
               <i className="fas fa-route text-green-400 text-xs" />
               <span className="text-xs font-bold text-green-300 uppercase tracking-widest">Simple Process</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-3">
               How Your Free Scan Works
             </h2>
-            <p className="text-slate-400 text-base max-w-lg mx-auto">
+            <p className="text-slate-600 dark:text-slate-400 text-base max-w-lg mx-auto">
               From booking to a written action plan — in under 48 hours.
             </p>
           </div>
@@ -336,8 +336,8 @@ export default function FreeScan() {
                       <span className={`text-[10px] font-black uppercase tracking-widest ${c.text} opacity-60 mb-0.5`}>{step.num}</span>
                       <i className={`fas ${step.icon} text-2xl ${c.text}`} />
                     </div>
-                    <h3 className="font-extrabold text-white text-base mb-2 leading-snug">{step.title}</h3>
-                    <p className="text-slate-500 text-xs leading-relaxed max-w-[180px] group-hover:text-slate-400 transition-colors">{step.desc}</p>
+                    <h3 className="font-extrabold text-slate-900 dark:text-white text-base mb-2 leading-snug">{step.title}</h3>
+                    <p className="text-slate-500 text-xs leading-relaxed max-w-[180px] group-hover:text-slate-600 dark:text-slate-400 transition-colors">{step.desc}</p>
                   </div>
                 );
               })}
@@ -354,7 +354,7 @@ export default function FreeScan() {
               <i className="fas fa-star text-amber-400 text-xs" />
               <span className="text-xs font-bold text-amber-300 uppercase tracking-widest">Real Results</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white">
               What Founders Said After Their Scan
             </h2>
           </div>
@@ -363,22 +363,22 @@ export default function FreeScan() {
             {TESTIMONIALS.map((t) => (
               <div
                 key={t.name}
-                className="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-6 hover:border-slate-700 transition-all duration-300 hover:shadow-xl hover:scale-[1.01] group"
+                className="bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6 hover:border-slate-300 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:scale-[1.01] group"
               >
                 <div className="flex gap-0.5 mb-4">
                   {[...Array(5)].map((_, i) => (
                     <i key={i} className="fas fa-star text-amber-400 text-xs" />
                   ))}
                 </div>
-                <p className="text-slate-300 text-sm leading-relaxed italic mb-5 group-hover:text-slate-200 transition-colors">
+                <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed italic mb-5 group-hover:text-slate-800 dark:text-slate-200 transition-colors">
                   {t.quote}
                 </p>
-                <div className="flex items-center gap-3 pt-4 border-t border-slate-800">
-                  <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${t.grad} flex items-center justify-center font-extrabold text-sm text-white shrink-0`}>
+                <div className="flex items-center gap-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+                  <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${t.grad} flex items-center justify-center font-extrabold text-sm text-slate-900 dark:text-white shrink-0`}>
                     {t.avatar}
                   </div>
                   <div>
-                    <p className="text-xs font-extrabold text-white">{t.name}</p>
+                    <p className="text-xs font-extrabold text-slate-900 dark:text-white">{t.name}</p>
                     <p className="text-[10px] text-slate-500">{t.role}</p>
                   </div>
                 </div>
@@ -394,9 +394,9 @@ export default function FreeScan() {
               { value: '₹0',   label: 'Cost to You',               icon: 'fa-tag',      color: 'text-green-400'  },
               { value: '< 24h', label: 'Action Plan Turnaround',   icon: 'fa-bolt',     color: 'text-purple-400' },
             ].map((s) => (
-              <div key={s.label} className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5 text-center hover:border-slate-700 transition-all">
+              <div key={s.label} className="bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 text-center hover:border-slate-300 dark:border-slate-700 transition-all">
                 <i className={`fas ${s.icon} ${s.color} text-lg mb-2`} />
-                <p className="text-2xl font-black text-white">{s.value}</p>
+                <p className="text-2xl font-black text-slate-900 dark:text-white">{s.value}</p>
                 <p className="text-[10px] text-slate-500 font-semibold uppercase tracking-wide mt-1">{s.label}</p>
               </div>
             ))}
@@ -409,7 +409,7 @@ export default function FreeScan() {
         <section className="py-24 px-6 max-w-4xl mx-auto text-center">
           <div className="relative">
             <div className="absolute -inset-px rounded-3xl bg-gradient-to-r from-blue-600/30 via-purple-600/30 to-pink-600/30 blur-md" />
-            <div className="relative bg-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-12 md:p-16 overflow-hidden">
+            <div className="relative bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl border border-slate-300 dark:border-slate-700/50 rounded-3xl p-12 md:p-16 overflow-hidden">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-px bg-gradient-to-r from-transparent via-blue-400/70 to-transparent" />
 
               <div className="relative w-20 h-20 mx-auto mb-7">
@@ -422,20 +422,20 @@ export default function FreeScan() {
               <span className="text-[10px] font-black uppercase tracking-widest text-blue-400 mb-3 block">
                 Limited Slots — First Come, First Served
               </span>
-              <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-5 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-5 leading-tight">
                 Ready to See What's{' '}
                 <span style={{ background: 'linear-gradient(135deg,#3b82f6,#8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                   Holding You Back?
                 </span>
               </h2>
-              <p className="text-slate-400 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-400 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
                 30 minutes. A senior consultant. Zero cost. Walk away knowing exactly what to fix first.
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   to="/book-session"
-                  className="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-2xl font-extrabold text-base bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-2xl shadow-blue-600/30 hover:shadow-blue-500/40 transition-all duration-300 hover:scale-[1.03] active:scale-[0.99] group"
+                  className="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-2xl font-extrabold text-base bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-slate-900 dark:text-white shadow-2xl shadow-blue-600/30 hover:shadow-blue-500/40 transition-all duration-300 hover:scale-[1.03] active:scale-[0.99] group"
                 >
                   <i className="fas fa-calendar-plus" />
                   Book My Free Scan
@@ -443,7 +443,7 @@ export default function FreeScan() {
                 </Link>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-extrabold text-sm bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white transition-all duration-300"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-extrabold text-sm bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-700 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:text-white transition-all duration-300"
                 >
                   <i className="fas fa-envelope text-xs" />
                   Have a Question First?

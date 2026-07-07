@@ -455,3 +455,80 @@
 .service-cta-link:hover i {
   transform: translateX(4px);
 }
+
+/* Dark Mode Overrides */
+.dark .services-section {
+  background: #020617;
+}
+
+.dark .section-title {
+  color: #f8fafc;
+}
+
+.dark .section-subtitle {
+  color: #94a3b8;
+}
+
+.dark .service-card {
+  background: #0f172a;
+  border-color: #1e293b;
+  box-shadow: 0 8px 30px -6px rgba(0, 0, 0, 0.5);
+}
+
+.dark .service-card-overlay {
+  background: linear-gradient(
+    145deg,
+    rgba(15, 23, 42, 0.88) 0%,
+    rgba(15, 23, 42, 0.75) 50%,
+    rgba(15, 23, 42, 0.88) 100%
+  );
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 2rem;
+}
+
+.dark .service-card:hover {
+  background: #0f172a;
+  border-color: #2563eb;
+  box-shadow: 0 20px 50px -10px rgba(37, 99, 235, 0.3);
+}
+
+.dark .service-number {
+  color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .service-title {
+  color: #f8fafc;
+}
+
+.dark .service-description {
+  color: #94a3b8;
+}
+
+.dark .service-details {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.dark .service-outcome-text {
+  color: #f1f5f9;
+}
+
+.dark .service-benefits-list {
+  color: #cbd5e1;
+}
+
+.dark .service-cta {
+  border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark .service-cta-link {
+  color: #60a5fa;
+}
+
+.dark .service-cta-link:hover {
+  color: #3b82f6;
+}
+

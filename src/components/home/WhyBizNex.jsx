@@ -27,7 +27,7 @@ export default function WhyBizNex() {
   const points = [
     {
       title: 'Data‑Driven, Not Guesswork',
-      desc: 'We’ve scanned 10,000+ real businesses – we know exactly where to look for leaks.',
+      desc: 'We’ve scanned 200+ real businesses – we know exactly where to look for leaks.',
       gradient: 'linear-gradient(145deg, #2563eb, #3b82f6)',
       icon: 'fa-chart-line'
     },
@@ -57,7 +57,7 @@ export default function WhyBizNex() {
             Built for Business <span className="gradient-text">Owners</span>
           </h2>
           <p className="section-subtitle">
-            We combine hard‑won ground data with a relentless focus on results.
+            We turn Ground Data into Boardroom Decisions
           </p>
         </div>
 

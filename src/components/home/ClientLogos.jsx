@@ -13,7 +13,7 @@ const logoList = Array(repeatCount).fill(clientLogos).flat();
 
 export default function ClientLogos() {
     return (
-        <section className="py-12 bg-white border-y border-slate-100 overflow-hidden">
+        <section className="py-12 bg-white dark:bg-slate-900 border-y border-slate-100 dark:border-slate-800 overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
                 <p className="text-center text-sm font-semibold text-slate-400 uppercase tracking-wider mb-6">
                     Trusted by leading companies
