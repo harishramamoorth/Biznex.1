@@ -112,9 +112,9 @@ export default function Hero() {
                 }}
               >
                 <h2
-                  className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tight drop-shadow-lg ${index === 2
-                      ? 'text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-indigo-600 to-blue-700 dark:from-blue-400 dark:via-indigo-400 dark:to-blue-400 bg-[length:200%_auto] animate-shimmer'
-                      : 'text-slate-800 dark:text-white drop-shadow-[0_2px_15px_rgba(255,255,255,0.9)] dark:drop-shadow-none'
+                  className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.8)] dark:drop-shadow-none ${index === 2
+                      ? 'text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-blue-400 bg-[length:200%_auto] animate-shimmer'
+                      : 'text-slate-900 dark:text-white'
                     }`}
                 >
                   {q}
