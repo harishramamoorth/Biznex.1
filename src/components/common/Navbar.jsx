@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import logo from '../../assets/binexlogo.png';
 import './Navbar.css';
+import { useTheme } from '../../context/ThemeContext';
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
     const { pathname } = useLocation();
+    const { theme, toggleTheme } = useTheme();
 
     // Close mobile menu on route change
     useEffect(() => {
@@ -119,20 +121,53 @@ export default function Navbar() {
                                 )}
                             </div>
                         ))}
+                        <button 
+                            onClick={toggleTheme} 
+                            className="mr-3 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors duration-200"
+                            aria-label="Toggle Theme"
+                        >
+                            {theme === 'dark' ? (
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-3.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            ) : (
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                                </svg>
+                            )}
+                        </button>
                         <Link to="/contact" className="navbar-cta">
                             Contact
                         </Link>
                     </div>
 
-                    {/* Hamburger button */}
-                    <button
-                        className={`hamburger ${mobileOpen ? 'open' : ''}`}
-                        onClick={() => setMobileOpen(!mobileOpen)}
-                        aria-label="Toggle menu"
-                        aria-expanded={mobileOpen}
-                    >
-                        <span /><span /><span />
-                    </button>
+                    {/* Right-aligned mobile controls */}
+                    <div className="flex items-center gap-3 lg:hidden">
+                        <button 
+                            onClick={toggleTheme} 
+                            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors duration-200"
+                            aria-label="Toggle Theme"
+                        >
+                            {theme === 'dark' ? (
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-3.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            ) : (
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                                </svg>
+                            )}
+                        </button>
+
+                        <button
+                            className={`hamburger ${mobileOpen ? 'open' : ''}`}
+                            onClick={() => setMobileOpen(!mobileOpen)}
+                            aria-label="Toggle menu"
+                            aria-expanded={mobileOpen}
+                        >
+                            <span /><span /><span />
+                        </button>
+                    </div>
                 </div>
             </nav>
 

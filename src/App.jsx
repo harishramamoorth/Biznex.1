@@ -6,6 +6,7 @@ import Footer from './components/common/Footer';
 import StickyCTA from './components/StickyCTA';
 import CustomCursor from './components/common/CustomCursor';
 import PageTransition from './components/common/PageTransition';
+import { ThemeProvider } from './context/ThemeContext';
 
 // Pages
 import Home from './pages/Home';
@@ -19,26 +20,28 @@ import FreeScan from './pages/FreeScan';
 
 function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <ProgressBar />
-      <CustomCursor />
-      <Navbar />
-      <PageTransition>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/process" element={<Process />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/book-session" element={<BookSession />} />
-          <Route path="/free-scan" element={<FreeScan />} />
-        </Routes>
-      </PageTransition>
-      <Footer />
-      <StickyCTA />
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <ProgressBar />
+        <CustomCursor />
+        <Navbar />
+        <PageTransition>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/process" element={<Process />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/book-session" element={<BookSession />} />
+            <Route path="/free-scan" element={<FreeScan />} />
+          </Routes>
+        </PageTransition>
+        <Footer />
+        <StickyCTA />
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

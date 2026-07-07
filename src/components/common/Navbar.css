@@ -312,10 +312,9 @@
 }
 
 /* Dark mode glassmorphism */
-@media (prefers-color-scheme: dark) {
-    .navbar-desktop .dropdown-menu > div {
-        background: rgba(15, 23, 42, 0.9) !important;
-        border: 1px solid rgba(51, 65, 85, 0.8) !important;
-        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3), 0 0 50px rgba(37, 99, 235, 0.05) !important;
-    }
+.dark .navbar-desktop .dropdown-menu > div {
+    background: rgba(15, 23, 42, 0.9) !important;
+    border: 1px solid rgba(51, 65, 85, 0.8) !important;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3), 0 0 50px rgba(37, 99, 235, 0.05) !important;
 }
+
