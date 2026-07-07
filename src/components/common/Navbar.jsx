@@ -59,7 +59,7 @@ export default function Navbar() {
         { to: '/pricing', label: 'Pricing' },
         { 
             to: '/book-session', 
-            label: 'Strategy', 
+            label: 'Strategy Call', 
             badge: 'New', 
             badgeClass: 'bg-blue-500/15 border-blue-500/30 text-blue-400' 
         },

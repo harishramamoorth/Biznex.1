@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import './HowWeWork.css';
 
@@ -51,11 +52,7 @@ const StepCard = ({ step, delay }) => {
         </div>
       </div>
 
-      <div className="step-cta">
-        <a href="#pricing" className="step-cta-link">
-          {step.cta} <i className="fas fa-arrow-right"></i>
-        </a>
-      </div>
+
     </div>
   );
 };
@@ -129,9 +126,9 @@ export default function HowWeWork() {
         </div>
 
         <div className="bottom-cta">
-          <a href="#pricing" className="btn-primary">
-            Book a Free Business Scan <i className="fas fa-arrow-right"></i>
-          </a>
+          <Link to="/pricing" className="btn-primary">
+            View Pricing & Plans <i className="fas fa-arrow-right"></i>
+          </Link>
         </div>
       </div>
     </section>

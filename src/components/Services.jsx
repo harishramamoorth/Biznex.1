@@ -41,11 +41,7 @@ const ServiceCard = ({ service, delay }) => {
             </ul>
           </div>
         </div>
-        <div className="service-cta">
-          <a href="#pricing" className="service-cta-link">
-            Learn more <i className="fas fa-arrow-right"></i>
-          </a>
-        </div>
+
       </div>
     </div>
   );
