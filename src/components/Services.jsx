@@ -1,15 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import './Services.css';
 
-const ServiceCard = ({ service, delay }) => {
+const ServiceCard = ({ service, delay, isHighlighted, activeQuestion }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
+  const serviceId = service.title.toLowerCase().replace(/\s+/g, '-');
 
   return (
     <div
+      id={serviceId}
       ref={ref}
-      className={`service-card ${inView ? 'visible' : ''}`}
+      className={`service-card ${inView ? 'visible' : ''} ${isHighlighted ? 'highlighted' : ''}`}
       style={{
         transitionDelay: `${delay}ms`,
         backgroundImage: `url(${service.bgImage})`,
@@ -21,6 +23,12 @@ const ServiceCard = ({ service, delay }) => {
       <div className="service-card-overlay"></div>
       
       <div className="service-content">
+        {isHighlighted && activeQuestion && (
+          <div className="active-question-banner">
+            <i className="fas fa-question-circle"></i>
+            <span>{activeQuestion}</span>
+          </div>
+        )}
         <div className="service-header">
           <span className="service-number">{service.number}</span>
           <span className="service-icon">{service.icon}</span>
@@ -48,6 +56,38 @@ const ServiceCard = ({ service, delay }) => {
 };
 
 export default function Services() {
+  const location = useLocation();
+  const [highlightedService, setHighlightedService] = useState(null);
+  const [activeQuestion, setActiveQuestion] = useState(null);
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.substring(1);
+      setHighlightedService(id);
+      
+      if (location.state?.question) {
+        setActiveQuestion(location.state.question);
+      }
+      
+      const timer1 = setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 100);
+
+      const timer2 = setTimeout(() => {
+        setHighlightedService(null);
+        setActiveQuestion(null);
+      }, 15000);
+      
+      return () => {
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+      };
+    }
+  }, [location.hash, location.state]);
+
   const services = [
     {
       number: '01',
@@ -117,9 +157,19 @@ export default function Services() {
         </div>
 
         <div className="services-grid">
-          {services.map((service, idx) => (
-            <ServiceCard key={idx} service={service} delay={idx * 100} />
-          ))}
+          {services.map((service, idx) => {
+            const serviceId = service.title.toLowerCase().replace(/\s+/g, '-');
+            const isHighlighted = highlightedService === serviceId;
+            return (
+              <ServiceCard 
+                key={idx} 
+                service={service} 
+                delay={idx * 100} 
+                isHighlighted={isHighlighted}
+                activeQuestion={isHighlighted ? activeQuestion : null} 
+              />
+            );
+          })}
         </div>
 
         <div className="bottom-cta">

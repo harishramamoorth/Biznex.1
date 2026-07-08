@@ -339,6 +339,45 @@
   border-color: #bfdbfe;
 }
 
+.service-card.highlighted {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3), 0 20px 50px -10px rgba(37, 99, 235, 0.2);
+  transform: translateY(-8px) scale(1.02);
+  z-index: 10;
+  animation: pulse-highlight 2s infinite ease-in-out;
+}
+
+.active-question-banner {
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  color: #1e40af;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  animation: slide-down 0.4s ease-out forwards;
+}
+
+.active-question-banner i {
+  color: #3b82f6;
+  font-size: 1.1rem;
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-highlight {
+  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5); }
+  70% { box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
 /* ── Details panel – semi-transparent for glass effect ── */
 .service-details {
   background: rgba(255, 255, 255, 0.6);
@@ -491,6 +530,27 @@
   background: #0f172a;
   border-color: #2563eb;
   box-shadow: 0 20px 50px -10px rgba(37, 99, 235, 0.3);
+}
+
+.dark .service-card.highlighted {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.4), 0 20px 50px -10px rgba(37, 99, 235, 0.4);
+  animation: pulse-highlight-dark 2s infinite ease-in-out;
+}
+
+.dark .active-question-banner {
+  background: rgba(96, 165, 250, 0.1);
+  border-color: rgba(96, 165, 250, 0.2);
+  color: #93c5fd;
+}
+.dark .active-question-banner i {
+  color: #60a5fa;
+}
+
+@keyframes pulse-highlight-dark {
+  0% { box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.6); }
+  70% { box-shadow: 0 0 0 15px rgba(96, 165, 250, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(96, 165, 250, 0); }
 }
 
 .dark .service-number {
