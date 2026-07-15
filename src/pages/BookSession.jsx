@@ -6,6 +6,7 @@ const TIME_SLOTS = [
   { time: '11:00 AM', period: 'Morning'        },
   { time: '01:30 PM', period: 'Afternoon'      },
   { time: '03:00 PM', period: 'Afternoon'      },
+  
   { time: '04:30 PM', period: 'Late Afternoon' },
 ];
 
