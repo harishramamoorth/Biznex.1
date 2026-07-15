@@ -8,6 +8,7 @@ import meetingImg from '../assets/meeting.jpg';
 const SCAN_COVERS = [
   {
     icon: 'fa-solid fa-sitemap',
+    
     color: 'blue',
     title: 'Org Structure Review',
     desc: 'Identify hierarchy gaps, redundant roles, and the hidden cost of mis-aligned reporting lines.',
