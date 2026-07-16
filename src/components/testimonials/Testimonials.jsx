@@ -3,7 +3,7 @@ import './Testimonials.css';
 
 export default function Testimonials() {
   const testimonials = [
-    { quote: "BizNex helped us identify leaks we didn't know existed. We grew 40% in 6 months.", author: 'CEO, Tech Startup', role: 'SaaS' },
+    { quote: "Business Building Company (BBC) helped us identify leaks we didn't know existed. We grew 40% in 6 months.", author: 'CEO, Tech Startup', role: 'SaaS' },
     { quote: "Our operations went from chaos to clarity in 90 days. Best investment we made.", author: 'COO, Manufacturing Co.', role: 'Industrial' },
     { quote: "The Scan-Solve-Scale framework transformed how we run our business.", author: 'Founder, Retail Chain', role: 'Retail' },
   ];

@@ -692,7 +692,7 @@ export default function BookSession() {
                     <div className="flex items-center gap-3">
                       <i className="fas fa-user-tie text-amber-400 w-4 text-center" />
                       <span className="text-slate-600 dark:text-slate-400">Host</span>
-                      <span className="ml-auto font-bold text-slate-900 dark:text-white">BizNex Senior Consultant</span>
+                      <span className="ml-auto font-bold text-slate-900 dark:text-white">Business Building Company (BBC) Senior Consultant</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <i className="fas fa-building text-slate-600 dark:text-slate-400 w-4 text-center" />

@@ -112,7 +112,7 @@ export default function Hero() {
                 }}
               >
                 <h2
-                  className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.8)] dark:drop-shadow-none ${index === 2
+                  className={`text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black leading-tight tracking-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.8)] dark:drop-shadow-none ${index === 2
                       ? 'text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-blue-400 bg-[length:200%_auto] animate-shimmer'
                       : 'text-slate-900 dark:text-white'
                     }`}
@@ -123,7 +123,7 @@ export default function Hero() {
             ))}
           </div>
 
-          {/* ── RIGHT: Encouragement + BizNex ── */}
+          {/* ── RIGHT: Encouragement + Business Building Company (BBC) ── */}
           <div
             className={`w-full md:w-1/2 transition-all duration-1000 ease-in-out overflow-hidden md:overflow-visible flex justify-center items-center ${isLeftShifted
                 ? 'opacity-100 translate-y-0 md:translate-x-0 max-h-[1000px] md:max-h-none mt-12 md:mt-0'

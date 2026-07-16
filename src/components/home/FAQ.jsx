@@ -7,7 +7,7 @@ const faqs = [
     {
         category: 'Getting Started',
         emoji: '🚀',
-        q: 'How do I get started with BizNex?',
+        q: 'How do I get started with Business Building Company (BBC)?',
         a: 'It starts with a free Business Scan — no credit card, no commitment. We analyse your sales, operations, and cashflow, then give you a one-page diagnosis within 48 hours. From there, you decide if you want to go deeper.',
     },
     {

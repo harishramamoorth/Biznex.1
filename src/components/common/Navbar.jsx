@@ -39,14 +39,7 @@ export default function Navbar() {
                 { to: '/process#how-we-work', label: 'How We Work' }
             ]
         },
-        { 
-            to: '/services', 
-            label: 'Services',
-            subLinks: [
-                { to: '/services', label: 'All Capabilities' },
-                { to: '/free-scan', label: 'Book a Free Scan' }
-            ]
-        },
+        
         { 
             to: '/about', 
             label: 'About',
@@ -57,12 +50,12 @@ export default function Navbar() {
             ]
         },
         { to: '/pricing', label: 'Pricing' },
-        { 
-            to: '/book-session', 
-            label: 'Strategy Call', 
-            badge: 'New', 
-            badgeClass: 'bg-blue-500/15 border-blue-500/30 text-blue-400' 
-        },
+        // { 
+        //     to: '/book-session', 
+        //     label: 'Strategy Call', 
+        //     badge: 'New', 
+        //     badgeClass: 'bg-blue-500/15 border-blue-500/30 text-blue-400' 
+        // },
         { 
             to: '/free-scan', 
             label: 'Free Scan', 
@@ -77,7 +70,7 @@ export default function Navbar() {
                 <div className="navbar-inner">
                     {/* Logo */}
                     <Link to="/" className="navbar-logo">
-                        <img src={logo} alt="BizNex Logo" />
+                        <img src={logo} alt="Business Building Company (BBC) Logo" />
                     </Link>
 
                     {/* Desktop links */}

@@ -39,9 +39,9 @@ export default function Footer() {
 
                     {/* Brand Column */}
                     <div className="footer-brand">
-                        <img src={logo} alt="BizNex Logo" className="footer-logo" />
+                        <img src={logo} alt="Business Building Company (BBC) Logo" className="footer-logo" />
                         <p className="footer-tagline">
-                            BizNex helps businesses identify growth bottlenecks, solve operational chaos, and scale systems with precision.
+                            Business Building Company (BBC) helps businesses identify growth bottlenecks, solve operational chaos, and scale systems with precision.
                         </p>
                        
                     </div>
@@ -54,7 +54,7 @@ export default function Footer() {
                         </h4>
                         <ul>
                             <li><Link to="/about" className="footer-link"><span className="link-emoji">🏢</span>About Us</Link></li>
-                            <li><Link to="/services" className="footer-link"><span className="link-emoji">⚙️</span>Our Services</Link></li>
+                            <li><Link to="/worried-about" className="footer-link"><span className="link-emoji">⚙️</span>Our Services</Link></li>
                             <li><Link to="/pricing" className="footer-link"><span className="link-emoji">💎</span>Pricing Plans</Link></li>
                             <li><Link to="/careers" className="footer-link"><span className="link-emoji">🚀</span>Careers</Link></li>
                         </ul>
@@ -103,7 +103,7 @@ export default function Footer() {
                 {/* ── Bottom Bar ── */}
                 <div className="footer-bottom">
                     <p className="footer-copy">
-                        © 2026 BizNex. All rights reserved. Built with <i className="fas fa-heart" style={{ color: '#ef4444' }}></i> by <strong>Mrg Engineering</strong>
+                        © 2026 Business Building Company (BBC). All rights reserved. Built with <i className="fas fa-heart" style={{ color: '#ef4444' }}></i> by <strong>Mrg Engineering</strong>
                     </p>
                     <div className="footer-legal">
                         <a href="#" className="footer-legal-link">Privacy Policy</a>

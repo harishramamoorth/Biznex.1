@@ -34,7 +34,7 @@ export default function FinalCTA() {
           Still stuck at <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Scan</span>?
         </h2>
         <p className="cta-animate-item delay-100 mt-6 text-xl md:text-2xl text-slate-200 max-w-2xl mx-auto font-light drop-shadow">
-          Growth is hard when you're solving alone. Let BizNex scan, solve, and scale with you.
+          Growth is hard when you're solving alone. Let Business Building Company (BBC) scan, solve, and scale with you.
         </p>
         <div className="cta-animate-item delay-200 mt-12 flex flex-col sm:flex-row justify-center gap-6">
           <a
@@ -44,7 +44,7 @@ export default function FinalCTA() {
             className="btn-whatsapp inline-flex items-center justify-center gap-3 bg-green-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-500 hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-green-600/40"
           >
             <i className="fab fa-whatsapp text-2xl"></i>
-            Talk to BizNex on WhatsApp
+            Talk to Business Building Company (BBC) on WhatsApp
           </a>
           <Link
             to="/pricing"

@@ -3,19 +3,20 @@
 /* ═══════════════════════════
    PAGE SYSTEM CONTAINER
    ═══════════════════════════ */
-.wa-home-section {
-  position: relative;
-  height: 100vh;
-  width: 100%;
+.wa-page {
+  position: fixed;
+  inset: 0;
+  font-family: 'Outfit', sans-serif;
   overflow: hidden;
-  z-index: 10;
   --bg-color: #f8fafc;
   background: var(--bg-color);
+  top: 64px; /* below navbar */
+  height: calc(100vh - 64px);
   transition: background-color 0.8s cubic-bezier(0.25, 1, 0.5, 1);
   backface-visibility: hidden;
 }
 
-html.dark .wa-home-section {
+html.dark .wa-page {
   --bg-color: #0b0f19; /* Premium deep dark slate */
 }
 
@@ -41,6 +42,67 @@ html.dark .wa-home-section {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* ═══════════════════════════
+   PREMIUM GLASS TOP BAR
+   ═══════════════════════════ */
+.wa-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(11, 15, 25, 0.4), transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.wa-back {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.wa-back i {
+  transition: transform 0.3s ease;
+}
+
+.wa-back:hover {
+  color: #ffffff;
+  transform: translateX(-4px);
+}
+
+.wa-back:hover i {
+  transform: translateX(-2px);
+}
+
+.wa-counter {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.wa-counter-cur {
+  color: var(--acc, #3b82f6);
+  font-size: 1.75rem;
+  text-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.wa-counter-sep {
+  color: rgba(255, 255, 255, 0.3);
+  margin: 0 4px;
 }
 
 /* ═══════════════════════════
@@ -189,6 +251,10 @@ html.dark .wa-home-section {
    RESPONSIVE DESIGN SYSTEM
    ═══════════════════════════ */
 @media (max-width: 768px) {
+  .wa-topbar {
+    padding: 1rem 1.5rem;
+  }
+  
   .wa-sidenav {
     display: none;
   }

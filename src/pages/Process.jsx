@@ -19,7 +19,7 @@ export default function Process() {
             The Process
           </span>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-8">
-            The BizNex <br/>
+            The Business Building Company (BBC) <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 animate-shimmer bg-[length:200%_auto]">
               Growth Journey
             </span>

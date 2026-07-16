@@ -45,7 +45,7 @@ const AnimatedCounter = ({ target, label, suffix = '+', duration = 2000 }) => {
 const TestimonialCarousel = () => {
   const testimonials = [
     {
-      quote: "BizNex helped us identify leaks we didn't know existed. We grew 40% in 6 months.",
+      quote: "Business Building Company (BBC) helped us identify leaks we didn't know existed. We grew 40% in 6 months.",
       author: 'Sarah Johnson',
       role: 'CEO, TechStart',
       img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face&auto=format'
@@ -169,11 +169,11 @@ export default function AboutStrip() {
               <div className="flex items-center gap-3">
                 <img
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=100&h=100&fit=crop&crop=face&auto=format"
-                  alt="BizNex Team"
+                  alt="Business Building Company (BBC) Team"
                   className="w-12 h-12 rounded-full object-cover border-2 border-blue-400 shadow-lg"
                 />
                 <div>
-                  <p className="text-sm font-semibold text-white">BizNex Team</p>
+                  <p className="text-sm font-semibold text-white">Business Building Company (BBC) Team</p>
                   <p className="text-xs text-slate-400">100+ businesses transformed</p>
                 </div>
               </div>

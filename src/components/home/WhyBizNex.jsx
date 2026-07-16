@@ -23,7 +23,7 @@ const FeatureCard = ({ title, desc, delay, gradient }) => {
   );
 };
 
-export default function WhyBizNex() {
+export default function WhyBBC() {
   const points = [
     {
       title: 'Data‑Driven, Not Guesswork',
@@ -52,7 +52,7 @@ export default function WhyBizNex() {
 
       <div className="container">
         <div className="section-header">
-          <span className="section-tag">Why BizNex</span>
+          <span className="section-tag">Why Business Building Company (BBC)</span>
           <h2 className="section-title">
             Built for Business <span className="gradient-text">Owners</span>
           </h2>

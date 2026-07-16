@@ -4,7 +4,7 @@ import binexLogo from '../../assets/binexlogo.png';
 
 const clientLogos = [
     { src: logo3, alt: 'MRG Engineering' },
-    { src: binexLogo, alt: 'BizNex' }
+    { src: binexLogo, alt: 'Business Building Company (BBC)' }
 ];
 
 // Repeat the logos to fill the marquee width nicely
