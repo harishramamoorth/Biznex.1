@@ -1,62 +1,177 @@
 import React, { useState } from 'react';
 import './FAQ.css';
 
-const CATEGORIES = ['All', 'Getting Started', 'Pricing', 'Process', 'Results'];
+const CATEGORIES = ['All', 'Getting Started', 'Pricing','Services', 'Process', 'Results', ];
 
 const faqs = [
     {
         category: 'Getting Started',
         emoji: '🚀',
-        q: 'How do I get started with Business Building Company (BBC)?',
-        a: 'It starts with a free Business Scan — no credit card, no commitment. We analyse your sales, operations, and cashflow, then give you a one-page diagnosis within 48 hours. From there, you decide if you want to go deeper.',
+        q: 'How do I know if my business actually needs systems?',
+        a: "If you're involved in daily operations, constantly answering the same questions, or your business slows down whenever you're away, it's a sign your business depends on you instead of systems. We help change that.",
     },
     {
         category: 'Process',
         emoji: '⏱️',
-        q: 'How long does a typical engagement take?',
-        a: 'Most clients see tangible, measurable results within the first 90 days. Our Scan is a one-time engagement. Solve and Scale are monthly retainers — we stay until you can run solo and scale independently.',
+        q: 'How does the engagement start?',
+        a: 'Every engagement starts with a Business Scan where we assess your operations, sales, team structure, and cashflow to identify your biggest growth bottlenecks.',
     },
+    
     {
         category: 'Pricing',
         emoji: '💰',
-        q: 'Do you offer custom pricing for larger teams?',
-        a: 'Yes. Our listed plans cover most businesses, but for large enterprises or multi-location businesses we create fully custom packages. Contact us and we\'ll have a proposal ready within 24 hours.',
+        q: 'How much does your consulting cost?',
+        a: "Pricing depends on the size of your business, project scope, number of locations, and implementation requirements. After the Business Scan, we'll recommend the most suitable engagement.",
+    },
+    {
+        category: 'Services',
+        emoji: '🏭',
+        q: "What's included in the Business Scan?",
+        a:"We review sales, operations, staff responsibilities, cashflow, reporting, customer journey, and operational bottlenecks before providing a prioritized action plan.",
     },
     {
         category: 'Getting Started',
         emoji: '🏭',
-        q: 'What industries do you specialise in?',
-        a: 'We\'ve worked across SaaS, manufacturing, retail, professional services, and D2C brands. Our diagnostic framework is industry-agnostic — the bottlenecks that kill growth are almost always the same, regardless of sector.',
+        q: "What types of businesses do you work with?",
+        a:"We work with growing SMEs, retail chains, manufacturers, distributors, service businesses, restaurants, healthcare providers, and businesses planning expansion or operational improvement.",
     },
     {
         category: 'Getting Started',
         emoji: '🎁',
-        q: 'Is the free scan really free?',
-        a: 'Absolutely. No credit card required, no strings attached. You\'ll receive a comprehensive one-page business health report and a 30-minute strategy call — completely free.',
+        q: 'Do you only work with businesses that want to expand?',
+        a: "No. Many clients first come to fix operational issues, improve profitability, reduce owner dependency, or build SOPs before thinking about expansion.",
+    },
+    {
+        category: 'Services',
+        emoji: '🏭',
+        q: "What is Structure Solve?",
+        a:"Structure Solve defines roles, responsibilities, reporting lines, and SOPs so your business operates consistently without depending on one person.",
+    },
+    {
+        category: 'Getting Started',
+        emoji: '🎁',
+        q: 'My business is already profitable. Why would I need consulting?',
+        a: "Profit doesn't always mean efficiency. We help profitable businesses scale without creating more complexity or increasing dependence on the owner.",
+    },
+    {
+        category: 'Services',
+        emoji: '🏭',
+        q: "What is the Expansion System?",
+        a:"Our Expansion System helps businesses grow into new locations, markets, products, or business units using repeatable systems instead of trial and error.",
+    },
+    {
+        category: 'Getting Started',
+        emoji: '🎁',
+        q: 'My business is struggling. Can you still help?',
+        a: "Yes. We begin with a Business Scan to identify what's causing the decline before recommending any solutions. The goal is to fix the root cause—not just the symptoms.",
+    },
+    {
+        category: 'Services',
+        emoji: '🏭',
+        q: "Do you help with hiring and onboarding?",
+        a:"Yes. We create hiring processes, interview scorecards, onboarding plans, and role-specific SOPs that improve consistency across your business.",
+    },
+    {
+        category: 'Services',
+        emoji: '🏭',
+        q: "Can you improve our sales process?",
+        a:"Yes. We analyze your sales pipeline, identify conversion bottlenecks, and build a structured sales process your team can consistently follow.",
+    },
+    {
+        category: 'Services',
+        emoji: '🏭',
+        q: "Do you help improve cashflow?",
+        a:"Yes. We identify cash leaks, improve inventory control, optimize payment cycles, and implement weekly cashflow tracking systems.",
     },
     {
         category: 'Process',
         emoji: '🤝',
-        q: 'Do you work with us hands-on or just advise?',
-        a: 'Both — but we lean heavily toward execution. On the Solve and Scale plans we work alongside your team, redesign processes, train people, and do weekly reviews. We\'re not consultants who hand you a deck and disappear.',
+        q: 'Do you create SOPs from scratch?',
+        a: "No. We document and improve the processes you're already using, making them consistent, scalable, and easy for your team to follow.",
+    },
+    {
+        category: 'Process',
+        emoji: '🤝',
+        q: 'Will you work with my team directly',
+        a: "Absolutely. We work closely with business owners, managers, and employees to ensure every system is practical and actually gets implemented.",
+    },
+    {
+        category: 'Process',
+        emoji: '🤝',
+        q: 'How long does implementation take?',
+        a: "Depending on your business size and requirements, implementation typically ranges from 4 to 12 weeks.",
+    },
+    {
+        category: 'Process',
+        emoji: '🤝',
+        q: 'Do you provide support after implementation?',
+        a: "Yes. Through our Scale Partnership, we continue reviewing KPIs, refining systems, and ensuring your team follows the new processes.",
     },
     {
         category: 'Results',
         emoji: '📈',
-        q: 'What kind of results can we expect?',
-        a: 'Our clients typically see 20–40% operational efficiency gains within 90 days, and 2–3× revenue growth within 12 months on the Scale plan. Results vary by starting point, but we document every milestone transparently.',
+        q: 'When can I expect to see improvements?',
+        a: 'Many clients see operational clarity within the first few weeks, while measurable improvements in efficiency and performance typically appear within 60–90 days, depending on implementation.',
+    },
+    {
+        category: 'Results',
+        emoji: '📈',
+        q: 'Can you guarantee business growth?',
+        a: 'No consultant can ethically guarantee growth. What we guarantee is a structured implementation of proven business systems that improve consistency, accountability, and scalability.',
     },
     {
         category: 'Results',
         emoji: '🔒',
-        q: 'Is our business information kept confidential?',
-        a: 'Yes, always. We sign an NDA before any engagement begins. Your financials, strategies, and internal data are never shared — full stop.',
+        q: 'Will my business be able to run without me?',
+        a: "That's one of our primary goals. We build systems, delegate responsibilities, and establish accountability so your business becomes less dependent on your daily involvement.",
+    },
+    {
+        category: 'Results',
+        emoji: '🔒',
+        q: 'What makes your consulting different?',
+        a: "Most consultants deliver reports. We build practical systems, implement them with your team, and stay involved until they become part of your daily operations.",
+    },
+    {
+        category: 'Results',
+        emoji: '🔒',
+        q: 'Do you customize solutions for every business?',
+        a: "Yes. Every business is different. We adapt our frameworks to your industry, team size, operational model, and growth objectives.",
+    },
+    {
+        category: 'Results',
+        emoji: '🔒',
+        q: 'How do you measure success?',
+        a: "We track improvements using operational KPIs, team accountability, implementation progress, cashflow visibility, customer experience, and business owner dependency.",
     },
     {
         category: 'Pricing',
         emoji: '🔄',
-        q: 'Can I cancel or pause my plan anytime?',
-        a: 'Yes. Solve and Scale are month-to-month with no lock-in contracts. Cancel or pause anytime with 30 days\' notice. We believe in earning your business every month.',
+        q: 'Do you offer one-time projects?',
+        a: 'Yes. We offer standalone services like Business Scans, SOP development, operational restructuring, and Expansion Systems, as well as long-term partnerships.',
+    },
+    {
+        category: 'Pricing',
+        emoji: '🔄',
+        q: 'Is there a long-term contract?',
+        a: 'Not necessarily. Some projects are completed within a few weeks, while businesses looking for ongoing growth often choose our Scale Partnership.',
+    },
+    {
+        category: 'Pricing',
+        emoji: '🔄',
+        q: 'Can you work with businesses outside my city?',
+        a: 'Yes. We work both remotely and on-site, depending on your project requirements and implementation needs.',
+    },
+    {
+        category: 'Pricing',
+        emoji: '🔄',
+        q: 'What if my team resists change?',
+        a: "That's common. We involve key team members throughout the process, provide training, and build systems that are simple enough for teams to adopt successfully.",
+    },
+    {
+        category: 'Pricing',
+        emoji: '🔄',
+        q: 'What happens after the Business Scan?',
+        a: "You'll receive a clear diagnosis, prioritized recommendations, and a roadmap. You can choose to implement the changes yourself or have us build and implement the systems with your team.",
     },
 ];
 

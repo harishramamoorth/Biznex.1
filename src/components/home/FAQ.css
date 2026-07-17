@@ -368,19 +368,52 @@
   box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.15);
 }
 
+/* Fixed: Question background in dark mode - keeps it dark always */
+.dark .faq-question {
+  background: #0f172a;
+}
+
+/* Fixed: Question text visibility in dark mode */
 .dark .faq-q-text {
   color: #f8fafc;
 }
 
+/* Fixed: Question hover state in dark mode - keeps background dark and text white */
+.dark .faq-question:hover {
+  background: #1e293b;
+}
+
+.dark .faq-question:hover .faq-q-text {
+  color: #f8fafc;
+}
+
+/* Fixed: Open state background in dark mode */
+.dark .faq-item-open .faq-question {
+  background: #1e293b;
+}
+
+/* Fixed: Answer text visibility in dark mode */
 .dark .faq-answer {
-  color: #cbd5e1;
   border-top-color: rgba(255, 255, 255, 0.05);
 }
 
+.dark .faq-answer p {
+  color: #cbd5e1;
+}
+
+/* Fixed: Bottom card text visibility */
 .dark .faq-bottom-card {
   background: #0f172a;
   border-color: #1e293b;
   box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.4);
+}
+
+.dark .faq-bottom-card h4 {
+  color: #f8fafc;
+}
+
+.dark .faq-bottom-card p {
+  color: #94a3b8;
 }
 
 .dark .faq-bottom-title {
@@ -390,4 +423,3 @@
 .dark .faq-bottom-desc {
   color: #94a3b8;
 }
-
