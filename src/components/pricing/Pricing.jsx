@@ -6,7 +6,7 @@ import './Pricing.css';
 const TIERS = [
     {
         id: 'young',
-        name: 'Young Entrepreneurs',
+        name: 'Young Entrepreneurs (Free)',
         range: '< ₹50L',
         type: 'free',
         content: {
@@ -144,25 +144,36 @@ const TIERS = [
 ];
 
 export default function Pricing() {
+    const [wizardStep, setWizardStep] = useState(0); // 0: Basic Info, 1: Turnover Selection, 2: Tailored Pricing
+    const [formData, setFormData] = useState({
+        companyName: '',
+        location: '',
+        businessType: ''
+    });
+
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedPlan, setSelectedPlan] = useState(null);
-    const [activeTierIdx, setActiveTierIdx] = useState(1); // Default to 'Growing'
+    const [activeTierIdx, setActiveTierIdx] = useState(null); // No default until selected
     const [animating, setAnimating] = useState(false);
 
-    const activeTier = TIERS[activeTierIdx];
+    const activeTier = activeTierIdx !== null ? TIERS[activeTierIdx] : null;
 
     const openModal = (plan) => {
         setSelectedPlan({ ...plan });
         setModalOpen(true);
     };
 
-    const handleTierChange = (idx) => {
-        if (idx === activeTierIdx) return;
+    const handleNextStep = () => {
         setAnimating(true);
         setTimeout(() => {
-            setActiveTierIdx(idx);
+            setWizardStep(prev => prev + 1);
             setAnimating(false);
-        }, 300); // Wait for fade out
+        }, 300);
+    };
+
+    const handleTierSelection = (idx) => {
+        setActiveTierIdx(idx);
+        handleNextStep();
     };
 
     return (
@@ -173,42 +184,102 @@ export default function Pricing() {
             </div>
 
             <div className="pricing-inner relative z-10">
-                {/* Header */}
+                {/* Header changes based on step */}
                 <div className="text-center max-w-3xl mx-auto mb-16 px-4">
-                    <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">
-                        Transparent Pricing for <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Every Stage of Growth</span>
-                    </h2>
-                    <p className="text-lg text-slate-600 dark:text-slate-400">
-                        Select your current annual turnover to reveal the strategic plans tailored perfectly to your scale.
-                    </p>
+                    {wizardStep === 0 && (
+                        <>
+                            <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">
+                                Let's Find Your <br className="hidden md:block" /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Growth Plan</span>
+                            </h2>
+                            <p className="text-lg text-slate-600 dark:text-slate-400">
+                                Tell us a bit about your business to get started.
+                            </p>
+                        </>
+                    )}
+                    {wizardStep === 1 && (
+                        <>
+                            <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">
+                                Select Your <br className="hidden md:block" /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Turnover</span>
+                            </h2>
+                            <p className="text-lg text-slate-600 dark:text-slate-400">
+                                Select your current annual turnover to reveal the strategic plans tailored perfectly to your scale.
+                            </p>
+                        </>
+                    )}
+                    {wizardStep === 2 && (
+                        <>
+                            <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">
+                                Transparent Pricing for <br className="hidden md:block" /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Every Stage of Growth</span>
+                            </h2>
+                            <p className="text-lg text-slate-600 dark:text-slate-400">
+                                Here is the tailored strategic plan for <span className="font-bold text-blue-600 dark:text-blue-400">{formData.companyName}</span>.
+                            </p>
+                        </>
+                    )}
                 </div>
 
-                {/* Segmented Control */}
-                <div className="flex justify-center mb-16 px-4">
-                    <div className="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl flex flex-wrap md:flex-nowrap justify-center gap-2 max-w-full relative">
-                        {TIERS.map((tier, idx) => (
-                            <button
-                                key={tier.id}
-                                onClick={() => handleTierChange(idx)}
-                                className={`relative px-6 py-4 rounded-xl flex flex-col items-center justify-center transition-all duration-300 min-w-[140px] md:min-w-[180px]
-                                    ${activeTierIdx === idx ? 'text-blue-700 dark:text-blue-400' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/50'}`}
-                            >
-                                {activeTierIdx === idx && (
-                                    <div className="absolute inset-0 bg-blue-50 dark:bg-blue-900/20 rounded-xl shadow-sm border border-blue-100 dark:border-blue-800/50 -z-10 animate-fade-in"></div>
-                                )}
-                                <span className="font-bold text-lg mb-1">{tier.name}</span>
-                                <span className={`text-xs font-semibold px-2 py-1 rounded-full ${activeTierIdx === idx ? 'bg-blue-100 dark:bg-blue-900/40' : 'bg-slate-100 dark:bg-slate-800'}`}>
-                                    {tier.range}
-                                </span>
-                            </button>
-                        ))}
-                    </div>
-                </div>
+                {/* Content Area with animation */}
+                <div className={`transition-all duration-300 ${animating ? 'opacity-0 scale-95' : 'opacity-100 scale-100'} px-4`}>
 
-                {/* Content Area */}
-                <div className={`transition-opacity duration-300 ${animating ? 'opacity-0 scale-95' : 'opacity-100 scale-100'} px-4`}>
+                    {wizardStep === 0 && (
+                        <div className="max-w-md mx-auto bg-white/90 dark:bg-slate-900/60 backdrop-blur-md border border-slate-200 dark:border-slate-800 p-8 rounded-2xl shadow-xl">
+                            <div className="space-y-5">
+                                <div>
+                                    <label className="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">Company Name</label>
+                                    <input type="text" className="w-full px-4 py-3 bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white placeholder-slate-400" value={formData.companyName} onChange={(e) => setFormData({...formData, companyName: e.target.value})} placeholder="Acme Corp" />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">Location</label>
+                                    <input type="text" className="w-full px-4 py-3 bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white placeholder-slate-400" value={formData.location} onChange={(e) => setFormData({...formData, location: e.target.value})} placeholder="City, Country" />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">Kind of Business</label>
+                                    <select className="w-full px-4 py-3 bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white" value={formData.businessType} onChange={(e) => setFormData({...formData, businessType: e.target.value})}>
+                                        <option value="">Select industry...</option>
+                                        <option value="retail">Retail / E-commerce</option>
+                                        <option value="saas">SaaS / Tech</option>
+                                        <option value="manufacturing">Manufacturing</option>
+                                        <option value="services">Professional Services</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <button 
+                                    onClick={handleNextStep}
+                                    disabled={!formData.companyName || !formData.location || !formData.businessType}
+                                    className={`w-full mt-4 px-8 py-3 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 ${
+                                        (formData.companyName && formData.location && formData.businessType)
+                                        ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-500/20 active:translate-y-0.5'
+                                        : 'bg-slate-200 dark:bg-slate-800 text-slate-500 cursor-not-allowed'
+                                    }`}
+                                >
+                                    Continue <i className="fas fa-arrow-right" />
+                                </button>
+                            </div>
+                        </div>
+                    )}
 
-                    {activeTier.type === 'free' ? (
+                    {wizardStep === 1 && (
+                        <div className="flex justify-center max-w-4xl mx-auto">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 w-full">
+                                {TIERS.map((tier, idx) => (
+                                    <button
+                                        key={tier.id}
+                                        onClick={() => handleTierSelection(idx)}
+                                        className="relative p-6 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-1 group"
+                                    >
+                                        <span className="font-bold text-lg mb-2 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 text-center">{tier.name}</span>
+                                        <span className="text-sm font-semibold px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/40 group-hover:text-blue-700 dark:group-hover:text-blue-300">
+                                            {tier.range}
+                                        </span>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {wizardStep === 2 && activeTier && (
+                        <div className="animate-fade-in-up">
+                            {activeTier.type === 'free' ? (
                         <div className="max-w-4xl mx-auto rounded-3xl bg-gradient-to-br from-green-500 to-emerald-700 p-[1px] shadow-2xl">
                             <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-12 relative overflow-hidden h-full">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
@@ -308,6 +379,25 @@ export default function Pricing() {
                                     </button>
                                 </div>
                             ))}
+                        </div>
+                    )}
+                    
+                    {wizardStep === 2 && (
+                        <div className="text-center mt-12 animate-fade-in">
+                            <button 
+                                onClick={() => {
+                                    setAnimating(true);
+                                    setTimeout(() => {
+                                        setWizardStep(1);
+                                        setAnimating(false);
+                                    }, 300);
+                                }} 
+                                className="text-sm font-bold text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors bg-white dark:bg-slate-900 px-6 py-3 rounded-full shadow-sm border border-slate-200 dark:border-slate-800"
+                            >
+                                <i className="fas fa-arrow-left mr-2"></i> Change Turnover Slab
+                            </button>
+                        </div>
+                    )}
                         </div>
                     )}
                 </div>

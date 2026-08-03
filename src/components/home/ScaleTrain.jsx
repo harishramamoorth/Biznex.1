@@ -8,7 +8,6 @@ export default function ScaleTrain() {
 
     const stops = [
         { label: 'Scan', desc: '360° audit of sales, ops, team, cashflow', icon: 'fa-search' },
-        { label: 'Diagnose', desc: 'Identify leaks & growth blockers', icon: 'fa-stethoscope' },
         { label: 'Solve', desc: 'Fix structure, SOPs, strategy', icon: 'fa-tools' },
         { label: 'Scale', desc: 'Execute & grow with our partnership', icon: 'fa-rocket' },
     ];
@@ -38,7 +37,7 @@ export default function ScaleTrain() {
                     <div className="track-fill" style={{ width: `${progress}%` }} />
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                     {stops.map((stop, idx) => {
                         const isActive = idx === activeIndex;
                         const isCompleted = idx < activeIndex;

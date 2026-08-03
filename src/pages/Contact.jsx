@@ -45,13 +45,16 @@ const STEPS = [
 
 export default function Contact() {
   const [currentStep, setCurrentStep] = useState(0);
+  const [contactMode, setContactMode] = useState('diagnose'); // 'diagnose' or 'quick'
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     businessName: '',
     industry: '',
     teamSize: '',
     challenge: '',
+    message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -110,9 +113,28 @@ export default function Contact() {
           </Link>
         </div>
 
+        {!isSubmitted && (
+          <div className="flex bg-slate-200 dark:bg-slate-800 p-1 rounded-xl mb-8 max-w-sm mx-auto">
+            <button
+              onClick={() => setContactMode('diagnose')}
+              className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${contactMode === 'diagnose' ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+            >
+              Free Diagnosis
+            </button>
+            <button
+              onClick={() => setContactMode('quick')}
+              className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${contactMode === 'quick' ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+            >
+              Quick Contact
+            </button>
+          </div>
+        )}
+
         {!isSubmitted ? (
           <div>
-            {/* Form Header */}
+            {contactMode === 'diagnose' ? (
+              <>
+                {/* Form Header */}
             <div className="mb-8">
               <span className="text-blue-600 dark:text-blue-400 font-bold uppercase tracking-widest text-xs">Free Business Scan</span>
               <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mt-1">Let's Diagnose Your Business</h1>
@@ -257,6 +279,56 @@ export default function Contact() {
                 </button>
               </div>
             </div>
+            </>) : (
+              /* Quick Contact Form */
+              <div className="animate-fade-in-up">
+                <div className="mb-8 text-center">
+                  <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mt-1">Get in Touch</h1>
+                  <p className="text-slate-500 dark:text-slate-400 mt-2">Leave your email or request a call back.</p>
+                </div>
+                
+                <div className="bg-white/90 dark:bg-slate-900/60 backdrop-blur-md border border-slate-200 dark:border-slate-800 p-8 rounded-2xl shadow-xl flex flex-col gap-5">
+                  <div>
+                    <label className="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">Name</label>
+                    <input type="text" className="w-full px-4 py-3 bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white placeholder-slate-400 transition-all" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} placeholder="Your Name" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">Email ID</label>
+                    <input type="email" className="w-full px-4 py-3 bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white placeholder-slate-400 transition-all" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} placeholder="you@company.com" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">Phone (For Call Back)</label>
+                    <input type="tel" className="w-full px-4 py-3 bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white placeholder-slate-400 transition-all" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} placeholder="+1 (555) 000-0000" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">Message</label>
+                    <textarea className="w-full px-4 py-3 bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white placeholder-slate-400 transition-all resize-none" rows={3} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} placeholder="How can we help?" />
+                  </div>
+                  
+                  <button
+                    type="button"
+                    onClick={handleSubmit}
+                    disabled={!formData.name || (!formData.email && !formData.phone) || isSubmitting}
+                    className={`mt-4 px-8 py-3 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 ${
+                      (formData.name && (formData.email || formData.phone))
+                        ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-500/20 active:translate-y-0.5'
+                        : 'bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-500 cursor-not-allowed'
+                    }`}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        Send Request <i className="fas fa-paper-plane" />
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         ) : (
           /* Success Screen */
@@ -264,12 +336,19 @@ export default function Contact() {
             <div className="w-20 h-20 bg-green-500/10 border border-green-500/20 rounded-full flex items-center justify-center mx-auto text-4xl text-green-500 dark:text-green-400 mb-6 animate-bounce">
               <i className="fas fa-check" />
             </div>
-            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white mb-3">Diagnostic Request Received</h2>
+            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white mb-3">
+              {contactMode === 'diagnose' ? 'Diagnostic Request Received' : 'Message Received'}
+            </h2>
             <p className="text-slate-600 dark:text-slate-300 mb-8 max-w-sm mx-auto">
-              Thank you, <span className="font-bold text-blue-600 dark:text-blue-400">{formData.name}</span>! We have everything we need to start scanning <span className="font-bold text-blue-600 dark:text-blue-400">{formData.businessName}</span>.
+              Thank you, <span className="font-bold text-blue-600 dark:text-blue-400">{formData.name}</span>! 
+              {contactMode === 'diagnose' 
+                ? <> We have everything we need to start scanning <span className="font-bold text-blue-600 dark:text-blue-400">{formData.businessName}</span>.</>
+                : <> We've received your request and will be in touch shortly.</>}
             </p>
             <div className="p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-300 text-sm max-w-sm mx-auto mb-8 font-medium">
-              📅 Expect your 1-page report and strategy call invitation in your inbox ({formData.email}) within 48 hours.
+              {contactMode === 'diagnose' 
+                ? `📅 Expect your 1-page report and strategy call invitation in your inbox (${formData.email}) within 48 hours.`
+                : `📅 Our team will get back to you within 24 hours.`}
             </div>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button 
@@ -278,10 +357,12 @@ export default function Contact() {
                   setFormData({
                     name: '',
                     email: '',
+                    phone: '',
                     businessName: '',
                     industry: '',
                     teamSize: '',
                     challenge: '',
+                    message: '',
                   });
                   setIsSubmitted(false);
                 }}

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 import './WorriedAbout.css';
 
@@ -22,90 +23,71 @@ const SLIDES = [
 export default function WorriedAbout() {
   const { theme } = useTheme();
   const [active, setActive] = useState(0);
-  const busy = useRef(false);
-  const touchStartY = useRef(null);
+  
+  // Ref for the main scrolling container
+  const containerRef = useRef(null);
+  
+  // Framer Motion hook to track scroll progress perfectly
+  const { scrollYProgress } = useScroll({
+    container: containerRef,
+  });
 
-  const goTo = (idx) => {
-    if (idx === active || busy.current) return;
-    busy.current = true;
-    setActive(idx);
-    setTimeout(() => {
-      busy.current = false;
-    }, 1000); // Match CSS transition duration
-  };
-
-  const next = () => goTo(Math.min(active + 1, SLIDES.length - 1));
-  const prev = () => goTo(Math.max(active - 1, 0));
-
+  // Track which section is in view to update the navigation dots
   useEffect(() => {
-    const handleWheel = (e) => {
-      e.preventDefault();
-      if (busy.current) return;
-      if (e.deltaY > 30) {
-        next();
-      } else if (e.deltaY < -30) {
-        prev();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(Number(entry.target.dataset.index));
+          }
+        });
+      },
+      {
+        root: containerRef.current,
+        threshold: 0.5, // Triggers when the section is 50% visible
       }
-    };
+    );
 
-    const handleTouchStart = (e) => {
-      touchStartY.current = e.touches[0].clientY;
-    };
+    const sections = document.querySelectorAll('.wa-section');
+    sections.forEach((sec) => observer.observe(sec));
 
-    const handleTouchMove = (e) => {
-      if (busy.current || touchStartY.current === null) return;
-      const diff = touchStartY.current - e.touches[0].clientY;
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) {
-          next();
-        } else {
-          prev();
-        }
-        touchStartY.current = null;
-      }
-    };
+    return () => observer.disconnect();
+  }, []);
 
-    const handleKeyDown = (e) => {
-      if (busy.current) return;
-      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next();
-      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') prev();
-    };
-
-    const el = document.getElementById('wa-scroll-container');
-    if (el) {
-      el.addEventListener('wheel', handleWheel, { passive: false });
-      el.addEventListener('touchstart', handleTouchStart, { passive: true });
-      el.addEventListener('touchmove', handleTouchMove, { passive: true });
+  const scrollToSection = (index) => {
+    const sections = document.querySelectorAll('.wa-section');
+    if (sections[index] && containerRef.current) {
+      // Native smooth scroll to the exact section
+      sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      if (el) {
-        el.removeEventListener('wheel', handleWheel);
-        el.removeEventListener('touchstart', handleTouchStart);
-        el.removeEventListener('touchmove', handleTouchMove);
-      }
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [active]);
-
-  const current = SLIDES[active];
+  };
 
   const getThemeClasses = (slideId) => {
     const isOdd = parseInt(slideId, 10) % 2 !== 0;
-    // In light theme: odd slides -> dark theme, even slides -> light theme
-    // In dark theme: odd slides -> light theme, even slides -> dark theme
     const isDarkSlide = (theme === 'light') ? isOdd : !isOdd;
-    if (isDarkSlide) {
-      return 'wa-theme-dark bg-slate-900 border-slate-800';
-    } else {
-      return 'wa-theme-light bg-slate-50 border-slate-200';
-    }
+    return isDarkSlide 
+      ? 'wa-theme-dark bg-slate-900 border-slate-800 text-white' 
+      : 'wa-theme-light bg-slate-50 border-slate-200 text-slate-900';
   };
 
+  const current = SLIDES[active] || SLIDES[0];
+
   return (
-    <div id="wa-scroll-container" className="wa-page transition-colors duration-500">
-      {/* Top Bar */}
+    <div className="wa-page transition-colors duration-500">
+      
+      {/* Dynamic Scroll Progress Bar using Framer Motion */}
+      <div className="wa-progress-container">
+        <motion.div 
+          className="wa-progress-fill" 
+          style={{ 
+            scaleY: scrollYProgress, 
+            transformOrigin: "top",
+            backgroundColor: current.accent 
+          }}
+        />
+      </div>
+
+      {/* Premium Glass Header */}
       <header className="wa-topbar">
         <Link to="/" className="wa-back">
           <i className="fas fa-arrow-left" /> Home
@@ -116,47 +98,51 @@ export default function WorriedAbout() {
         </div>
       </header>
 
-      {/* Sidenav */}
+      {/* Side Navigation */}
       <nav className="wa-sidenav">
         {SLIDES.map((s, i) => (
           <button
             key={s.id}
             className={`wa-snav-btn ${i === active ? 'wa-snav-active' : ''}`}
-            onClick={() => goTo(i)}
+            onClick={() => scrollToSection(i)}
             title={s.label}
           >
-            <span className="wa-snav-dot" style={i === active ? { background: current.accent } : {}} />
+            <span className="wa-snav-dot" style={i === active ? { background: current.accent, boxShadow: `0 0 12px ${current.accent}` } : {}} />
             <span className="wa-snav-label">{s.id} — {s.label}</span>
           </button>
         ))}
       </nav>
 
-      {/* Vertical Slider Wrapper */}
-      <div
-        className="wa-slides-wrapper"
-        style={{ transform: `translateY(-${active * 100}%)` }}
-      >
+      {/* CONTINUOUS SCROLL WRAPPER */}
+      <div className="wa-continuous-wrapper" ref={containerRef}>
         {SLIDES.map((s, i) => {
           const SlideComponent = s.component;
+          
           return (
-            <section
+            <motion.section
               key={s.id}
-              className={`wa-slide-section flex items-center justify-center transition-all duration-500 ease-in-out ${i === active ? 'wa-slide-section-active' : ''
-                } ${getThemeClasses(s.id)}`}
+              data-index={i}
+              className={`wa-section ${getThemeClasses(s.id)}`}
+              // Premium Apple-style reveal: Subtle scale (0.95), light blur (2px), fading in
+              initial={{ opacity: 0.3, scale: 0.95, filter: 'blur(2px)' }}
+              whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} // Cinematic ease out
+              viewport={{ amount: 0.4 }} // Triggers when 40% is in view
             >
-              <SlideComponent isActive={i === active} />
-            </section>
+              <div className="wa-section-inner">
+                 <SlideComponent isActive={i === active} accent={s.accent} />
+              </div>
+            </motion.section>
           );
         })}
       </div>
 
-      {/* Footer Nav */}
+      {/* Floating Bottom Footer */}
       <footer className="wa-footer">
         <button
           className="wa-nav-btn"
-          onClick={prev}
+          onClick={() => scrollToSection(Math.max(active - 1, 0))}
           disabled={active === 0}
-          style={{ '--acc': current.accent }}
         >
           <i className="fas fa-chevron-left" /> Prev
         </button>
@@ -165,18 +151,17 @@ export default function WorriedAbout() {
           {SLIDES.map((_, i) => (
             <button
               key={i}
-              onClick={() => goTo(i)}
+              onClick={() => scrollToSection(i)}
               className={`wa-dot ${i === active ? 'wa-dot-active' : ''}`}
-              style={i === active ? { background: current.accent, width: 28 } : {}}
+              style={i === active ? { background: current.accent, width: '32px' } : {}}
             />
           ))}
         </div>
 
         <button
           className="wa-nav-btn"
-          onClick={next}
+          onClick={() => scrollToSection(Math.min(active + 1, SLIDES.length - 1))}
           disabled={active === SLIDES.length - 1}
-          style={{ '--acc': current.accent }}
         >
           Next <i className="fas fa-chevron-right" />
         </button>
@@ -184,4 +169,3 @@ export default function WorriedAbout() {
     </div>
   );
 }
-

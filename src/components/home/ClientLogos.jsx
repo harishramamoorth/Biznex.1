@@ -1,14 +1,22 @@
 import React from 'react';
-import logo3 from '../../assets/logo3.jpg';
-import binexLogo from '../../assets/binexlogo.png';
+import company1 from '../../assets/company1.png';
+import company2 from '../../assets/company2.png';
+import company3 from '../../assets/company3.png';
+import company4 from '../../assets/company4.png';
+import company5 from '../../assets/Compnay5.png';
+import company6 from '../../assets/company6.png';
 
 const clientLogos = [
-    { src: logo3, alt: 'MRG Engineering' },
-    { src: binexLogo, alt: 'Business Building Company (BBC)' }
+    { src: company1, alt: 'Company 1' },
+    { src: company2, alt: 'Company 2' },
+    { src: company3, alt: 'Company 3' },
+    { src: company4, alt: 'Company 4' },
+    { src: company5, alt: 'Company 5' },
+    { src: company6, alt: 'Company 6' }
 ];
 
 // Repeat the logos to fill the marquee width nicely
-const repeatCount = 6;
+const repeatCount = 3;
 const logoList = Array(repeatCount).fill(clientLogos).flat();
 
 export default function ClientLogos() {
