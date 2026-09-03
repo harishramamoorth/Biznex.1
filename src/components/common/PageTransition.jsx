@@ -6,6 +6,7 @@ import './PageTransition.css';
  * every time the route pathname changes, giving a smooth fade-up transition.
  */
 export default function PageTransition({ children }) {
+  
   const { pathname } = useLocation();
 
   return (
