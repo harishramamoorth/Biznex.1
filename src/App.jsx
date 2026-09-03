@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import ScrollToTop from './components/common/ScrollToTop';
 import ProgressBar from './components/ProgressBar';
 import Navbar from './components/common/Navbar';
@@ -20,6 +21,19 @@ import WorriedAbout from './pages/WorriedAbout';
 import { Navigate } from 'react-router-dom';
 
 function App() {
+  useEffect(() => {
+    document.title = "Business Building Company (BBC) — Business Growth Partner";
+    const link = document.querySelector("link[rel~='icon']");
+    if (link) {
+      link.href = '/favicon.png';
+    } else {
+      const newLink = document.createElement('link');
+      newLink.rel = 'icon';
+      newLink.href = '/favicon.png';
+      document.head.appendChild(newLink);
+    }
+  }, []);
+
   return (
     <ThemeProvider>
       <BrowserRouter>
