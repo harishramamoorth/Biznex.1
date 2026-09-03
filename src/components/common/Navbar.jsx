@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import logo from '../../assets/binexlogo.png';
+import logo from '../../assets/Bbc logo.png';
 import './Navbar.css';
 import { useTheme } from '../../context/ThemeContext';
 
